@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="pagedash">
+        <div class="headvins2">
+            <h3 class="titrevins">Mes Commandes</h3>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+                {% endfor %}
+            {% endfor %}
+            <button class="btncommande"><a href={{ path('create_command') }}>+ Nouvelle Commande</a></button>
+        </div>
+
+        <div class="header4">
+            <p>Mes Commandes</p>
+            <button><a href="{{ path('mes_commandes') }}">Voir Toutes Mes Commandes</a></button>
+        </div>
+
+    <h3 class="titrevins">Categories</h3>
+
+    <div class="categorie">
+        <div class="box">
+            <a href=""></a><img src="{{ asset('img/recboxs.png') }}" alt="logo reception">
+            <p>Receptionner</p>
+        </div>
+        <div class="box">
+            <img src="{{ asset('img/recboxs.png') }}" alt="logo reception">
+            <p>Commandes Terminées</p>
+        </div>
+        <div class="box">
+            <img src="{{ asset('img/recboxs.png') }}" alt="logo reception">
+            <p>Facture</p>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

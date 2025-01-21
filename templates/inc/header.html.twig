@@ -1,0 +1,106 @@
+
+{# Logo black and white #}
+<div class="basefil">
+
+    <div class="image-wrapper">
+
+        <img src="{{ asset('img/designlogo.png') }}" alt="banniere" id="homeimglogo">
+
+    </div>
+    <div class="image-container">
+
+
+            <div class="image-wrapper">
+                <a href="{{ path('main') }}">HOME</a>
+                <span class="image-title">Home</span>
+            </div>
+
+        <div class="image-wrapper">
+            <a href="{{ path('app_login') }}">COMMENCER</a>
+            <span class="image-title">Connexion</span>
+        </div>
+
+
+    </div>
+</div>
+
+
+{#  Logo en couleur
+<div class="basefil">
+
+
+    <div class="image-container">
+        <div class="image-wrapper">
+
+            <img src="{{ asset('img/logo4.png') }}" alt="banniere" id="homeimglogo">
+
+        </div>
+        {% if app.user %}
+        <div class="image-wrapper">
+            <a href="{{ path('main_home') }}"><img src="{{ asset('img/hom.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">Home</span>
+        </div>
+
+        <div class="image-wrapper">
+            <a href="{{ path('etablissement_show', { 'pseudo': app.user.pseudo }) }}"><img src="{{ asset('img/etabs.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">Mon Etablissement</span>
+        </div>
+
+        <div class="image-wrapper">
+            <a href="{{ path('vins_list') }}" title="Mes Vins"><img src="{{ asset('img/vinver.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">Mes Vins</span>
+        </div>
+        <div class="image-wrapper">
+            <a href="{{ path('vins_cave') }}" title="Mes Caves"><img src="{{ asset('img/cavevins.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">Mes Caves</span>
+        </div>
+        <div class="image-wrapper">
+            <a href="{{ path('listinventaire') }}" title="Inventaire"><img src="{{ asset('img/invent.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">Inventaire</span>
+        </div>
+        <div class="image-wrapper">
+            <a href="{{ path('base_vins') }}" title="BDD Vins"><img src="{{ asset('img/bdds.png') }}" alt="maison" id="homeimg"></a>
+            <span class="image-title">BDD Vins</span>
+        </div>
+
+        <div class="image-wrapper">
+            <a href="#" id="profile-link" title="Profil"><img src="{{ asset('img/D2.png') }}" alt="maison" id="homeimgprofil"></a>
+            <span class="image-title">Vous</span>
+            <div class="dropdown-menu" id="profile-dropdown">
+                <div class="nameprofil">
+                <img src="{{ asset('img/D2.png') }}" alt="maison" id="homeimgprofilmenu">
+                <h4 style="text-transform: uppercase">{{ app.user.nom }} {{ app.user.prenom }}</h4>
+                </div>
+                <div class="logoutprofil">
+                <img src="{{ asset('img/profil.png') }}" alt="logo logout"  id="homeimgmenu"><a href="{{ path('app_profil', {'id': app.user.id}) }}">Modifier le profil</a>
+                </div>
+                <div class="logoutprofil">
+                <img src="{{ asset('img/par.png') }}" alt="logo logout"  id="homeimgmenu"><a href="">Paramètres</a>
+                </div>
+                <div class="logoutprofil">
+                <img src="{{ asset('img/logouts.png') }}" alt="logo logout"  id="homeimgmenu"><a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+                </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+#}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const profileLink = document.getElementById('profile-link');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Fermer le menu déroulant si l'utilisateur clique en dehors
+        window.addEventListener('click', function(event) {
+            if (!profileDropdown.contains(event.target) && !profileLink.contains(event.target)) {
+                profileDropdown.style.display = 'none';
+            }
+        });
+    });
+</script>

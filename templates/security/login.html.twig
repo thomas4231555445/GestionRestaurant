@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block header %}
+    <!-- Ne rien mettre ici pour ne pas afficher le header -->
+{% endblock %}
+
+{% block body %}
+    <div class="decorslogin">
+        <img src="{{ asset('img/logo4.png') }}" alt="logo" class="logologin">
+    </div>
+
+    <div class="login-box">
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h2 style="color: #ff4c4c" id="titleForm" class="h3 mb-3 font-weight-normal">Connexion</h2>
+    <div class="user-box">
+    <input type="text" value="{{ last_username }}" name="pseudo" id="inputPseudo" class="form-control" autocomplete="username" required autofocus>
+    <label id="labelForm" for="inputPseudo">Pseudo</label>
+    </div>
+    <div class="user-box">
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <label id="labelForm" for="inputPassword">Password</label>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+    </div>
+    <button id="btnForm" class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+
+</form>
+        <br>
+
+        <a href="{{ path('app_register') }}"><button id="btnForm" class="btn btn-lg btn-primary" type="submit">Creer un compte !</button></a>
+
+    </div>
+
+{% endblock %}

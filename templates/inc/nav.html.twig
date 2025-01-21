@@ -1,0 +1,28 @@
+
+<input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon"/>
+
+<label for="menu-icon"></label>
+<nav class="nav">
+    <ul>
+        {%  if app.user %}
+            <li><a href="{{ path('main_home') }}" title="Home">Home</a></li>
+            <li><a href="{{ path('etablissement_show', { 'pseudo': app.user.pseudo }) }}" title="Mon Restaurant">Mon Etablissement</a></li>
+            <li><a href="{{ path('app_logout') }}" title="Logout">Logout ({{ app.user.pseudo }})</a></li>
+
+
+            <li><a href="{{ path('vins_list') }}" title="Mes Vins">Mes Vins</a></li>
+
+            <li><a href="{{ path('vins_cave') }}" title="Mes Caves">Mes Caves</a></li>
+            <li><a href="{{ path('listinventaire') }}" title="Inventaire">Inventaire</a></li>
+
+            <li><a href="{{ path('base_vins') }}" title="BDD Vins">BDD Vins</a></li>
+            {#  {% if is_granted('ROLE_MAIN') %}
+           <li><a href="{{ path('bddetablissement_list') }}" title="BDD Etablissement">BDD Etablissement</a></li>
+                {% endif %}  #}
+        {% else %}
+                <li><a href="{{ path('app_login') }}" title="Connexion">Connexion</a></li>
+                <li><a href="{{ path('app_register') }}" title="Inscription">Inscritpion</a></li>
+        {% endif %}
+    </ul>
+</nav>
+

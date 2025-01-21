@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+
+        <a href="{{path('descriptionfour', { 'id': fournisseur.id })}}"><img src="{{ asset('img/fleches.png') }}" alt="fleche retour" style="height: 3em;"></a>
+
+        <h3>{{ fournisseur.nom }} - {{ fournisseur.prenom }} {{ fournisseur.nomFamille }} - {{ fournisseur.telephoneperso }}</h3>
+
+        <div class="detailsvin">
+
+            {{ form_start(form) }}
+            <div class="formmodif">
+                {{ form_row(form.nom) }}
+            </div><div class="formmodif">
+                {{ form_row(form.prenom) }}
+            </div><div class="formmodif">
+                {{ form_row(form.nom_famille) }}
+            </div><div class="formmodif">
+                {{ form_row(form.telephoneperso) }}
+            </div><div class="formmodif">
+                {{ form_row(form.mailperso) }}
+            </div><div class="formmodif">
+                {{ form_row(form.adresse) }}
+            </div><div class="formmodif">
+                {{ form_row(form.code_postale) }}
+            </div><div class="formmodif">
+                {{ form_row(form.ville) }}
+            </div>
+            <div class="formmodif">
+                {{ form_row(form.pays) }}
+            </div>
+            <div class="formmodif">
+                {{ form_row(form.mail) }}
+            </div>
+            <div class="formmodif">
+                {{ form_row(form.telephone) }}
+            </div>
+
+            <button class="btnformcave">{{ 'Create'|trans }}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

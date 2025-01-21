@@ -1,0 +1,212 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+        <div class="headvins2">
+            <h3 class="titrevins">Nouvelle Commande</h3>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <h4 class="bienvenuedate" style="margin-left: 3em;">{{ "now"|date("d/m/Y") }}</h4>
+
+        <div class="selectfournisseur">
+            <select id="fournisseur" name="fournisseur">
+                <option value="-">Selectionner un fournisseurs</option>
+                {% for fournisseur in fournisseurs %}
+                    <option value="{{ fournisseur.id }}">{{ fournisseur.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="ajoutfour">
+            <a href="{{ path('create_fournisseur') }}"><p> + Ajouter un fournisseurs</p></a>
+        </div>
+
+        <div class="maininfo">
+            {% for fournisseur in fournisseurs %}
+                <div class="infosfournisseurs" id="infos-{{ fournisseur.id }}" style="display: none;">
+                    <div class="item-fournisseur">
+                        <label>Nom</label>
+                        <label>Siren</label>
+                    </div>
+                    <div class="item-fournisseur">
+                    <p>{{ fournisseur.nom }}</p>
+                        <p>{{ fournisseur.siren }}</p>
+                    </div>
+                    <div class="item-fournisseur">
+                        <label>Adresse</label>
+
+                    </div>
+                    <div class="item-fournisseur">
+                    <p>{{ fournisseur.adresse }}</p>
+
+                    </div>
+                    <div class="item-fournisseur">
+                        <label>Code Postale</label>
+                        <label>Ville</label>
+                    </div>
+                    <div class="item-fournisseur">
+                    <p>{{ fournisseur.codePostale }}</p>
+                    <p>{{ fournisseur.ville }}</p>
+
+                    </div>
+                    <div class="item-fournisseur">
+                        <label>Prenom</label>
+                        <label>Nom</label>
+                    </div>
+                    <div class="item-fournisseur">
+                    <p>{{ fournisseur.prenom }}</p>
+                    <p>{{ fournisseur.nomFamille }}</p>
+                    </div>
+                    <div class="item-fournisseur">
+                        <label>Telephone</label>
+                        <label>Mail</label>
+                    </div>
+                    <div class="item-fournisseur">
+                    <p>{{ fournisseur.telephoneperso }}</p>
+                    <p>{{ fournisseur.mailperso }}</p>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="vins-list" >
+            <h4>Liste des vins :</h4>
+
+                <button id="submit-btn" >Créer le Bon de Commande</button>
+                <button id="save-btn" >Sauver et Fermer</button>
+
+            <ul id="vins-list">
+            </ul>
+        </div>
+
+<div ><p style="height: 10em"> </p></div>
+    </div>
+
+    <script>
+        document.getElementById('fournisseur').addEventListener('change', function() {
+            var selectedFournisseursId = this.value;
+            var infosDivs = document.querySelectorAll('.infosfournisseurs');
+
+            infosDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+
+            var selectedInfoDiv = document.getElementById('infos-' + selectedFournisseursId);
+            if (selectedInfoDiv) {
+                selectedInfoDiv.style.display = 'block';
+            }
+
+
+            // Requête AJAX pour récupérer les vins
+            fetch(`{{ path('get_vins_by_fournisseur', { id: '__id__' }) }}`.replace('__id__', selectedFournisseursId))
+                .then(response => response.json())
+                .then(data => {
+                    var vinsList = document.getElementById('vins-list');
+                    vinsList.innerHTML = ''; // Vider la liste des vins
+                    data.forEach(vin => {
+                        var listItem = document.createElement('li');
+                        listItem.textContent = `${vin.domaine} - ${vin.appellation} - ${vin.nom} - ${vin.millesime}  `;
+
+                        // Ajouter un input après le nom du vin
+                        var input = document.createElement('input');
+                        input.type = 'number';
+                        input.min = '0';
+                        input.name = 'vin-quantity-' + vin.id;
+                        input.id = 'vin-quantity-' + vin.id;
+                        input.placeholder = 'Quantité';
+
+                        listItem.appendChild(input);
+                        vinsList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            var selectedFournisseursId = document.getElementById('fournisseur').value;
+            var vinsList = document.getElementById('vins-list');
+            var vinsData = [];
+
+            vinsList.querySelectorAll('li').forEach(function(li) {
+                var vinName = li.textContent;
+                var vinQuantity = li.querySelector('input').value;
+                vinsData.push({ name: vinName, quantity: vinQuantity });
+            });
+
+            fetch(`{{ path('generate_pdf') }}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fournisseurId: selectedFournisseursId,
+                    vins: vinsData
+                })
+            })
+                .then(response => response.blob())
+                .then(blob => {
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'commande.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error:', error));
+
+        });
+        document.getElementById('save-btn').addEventListener('click', function() {
+            var selectedFournisseursId = document.getElementById('fournisseur').value;
+
+            // Récupérer l'ID du restaurant de l'utilisateur connecté via Twig
+            var restaurantId = {{ restaurant.id }}; // Assurez-vous que cette variable est disponible
+            var userId = {{ app.user.id }}; // L'ID de l'utilisateur connecté
+
+            // Vérifier qu'un fournisseur a été sélectionné
+            if (selectedFournisseursId === "-") {
+                alert("Veuillez sélectionner un fournisseur.");
+                return;
+            }
+
+            // Envoyer les données au backend pour enregistrer la commande
+            fetch(`{{ path('save_commande') }}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fournisseurId: selectedFournisseursId,
+                    restaurantId: restaurantId,
+                    userId: userId
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Commande enregistrée avec succès.");
+
+                        // Optionnel : Recharger la page pour mettre à jour l'interface
+                        window.location.reload();  // Cela recharge la page
+                    } else {
+                        alert("Erreur lors de l'enregistrement de la commande.");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+
+
+{% endblock %}

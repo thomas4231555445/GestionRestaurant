@@ -1,0 +1,1994 @@
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.main-view-vin {
+    margin-left: -8em;
+}
+
+.search {
+    margin-left: 13em;
+}
+
+.search label {
+    display: none;
+}
+
+.search input {
+    width: 70%;
+    height: 3em;
+    border-collapse: collapse;
+    border-radius: 2em;
+    border: none;
+    padding-left: 1em;
+    margin: auto;
+}
+
+.search2 {
+    margin-left: 13em;
+}
+
+.search2 label {
+    display: none;
+}
+
+.search2 input {
+    width: 70%;
+    height: 3em;
+    border-collapse: collapse;
+    border-radius: 2em;
+    border: none;
+    padding-left: 1em;
+    margin: auto;
+}
+
+.vin-table {
+    width: 100%;
+    height: 10em;
+    margin-bottom: 100px;
+    border-radius: 10px;
+    font-size: small;
+    outline: none;
+    border-collapse: collapse;
+    overflow-y: auto;
+    table-layout: fixed;
+}
+
+.vin-table th, .vin-table td {
+    background-color: var(--secondaire);
+    font-family: Arial, sans-serif;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--textbtn);
+    padding: 8px;
+    text-align: left;
+}
+
+.vin-table th {
+    height: 5em;
+}
+
+.vin-table td {
+    background-color: var(--secondaire);
+    font-family: Arial, sans-serif;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--verylightgrey);
+
+
+}
+
+.vin-table tr {
+    border-bottom: 1px solid var(--textbtn);
+}
+
+.vin-table tr:nth-child(even) {
+    background-color: var(--backtableau);
+}
+
+.vin-table tr:hover {
+    background-color: var(--hovertableau);
+}
+
+.vin-table2 {
+    width: 100%;
+    height: 10em;
+    margin-bottom: 100px;
+    border-radius: 10px;
+    font-size: small;
+    outline: none;
+    border-collapse: collapse;
+    overflow-y: auto;
+    table-layout: fixed;
+}
+
+.vin-table2 th, .vin-table2 td {
+    background-color: var(--secondaire);
+    font-family: Arial, sans-serif;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--textbtn);
+    padding: 8px;
+    text-align: left;
+}
+
+.vin-table2 th {
+    height: 5em;
+}
+
+.vin-table2 td {
+    background-color: var(--secondaire);
+    font-family: Arial, sans-serif;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--verylightgrey);
+
+
+}
+
+.vin-table2 tr {
+    border-bottom: 1px solid var(--textbtn);
+}
+
+.vin-table2 tr:nth-child(even) {
+    background-color: var(--backtableau);
+}
+
+.vin-table2 tr:hover {
+    background-color: var(--hovertableau);
+}
+
+a{
+    text-decoration: none;
+    color: var(--secondaire);
+}
+
+
+.table-container tbody {
+    overflow-y: auto;
+    height: 100%;
+
+}
+
+.table-container thead {
+    flex-shrink: 0;
+}
+
+.table-container2 tbody {
+    overflow-y: auto;
+    height: 100%;
+
+}
+
+.table-container2 thead {
+    flex-shrink: 0;
+}
+
+.btnexport {
+    appearance: none;
+    background-color: var(--principal);
+    box-shadow: 2px 2px 6px var(--lightgrey);
+    border: none;
+    border-radius: 2em;
+    color: var(--textbtn);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: 2em auto 2em 70%;
+
+}
+
+
+
+.btnajoutref {
+    appearance: none;
+    background-color: var(--principal);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 2em;
+    box-shadow: var(--textbtn) 0 1px 0, var(--boxShadow) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: auto auto 2em 50%;
+
+}
+
+.btnajout:hover {
+    background-color: var(--btnhover);
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.btnajout:disabled {
+    background-color: var(--secondaire);
+    border-color: rgba(27, 31, 35, 0.15);
+    color: var(--verylightgrey);
+    cursor: default;
+}
+
+.btnajout:active {
+    background-color: var(--principal);
+    box-shadow: var(--boxShadow) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.btnajout:focus {
+    outline: 1px transparent;
+}
+
+.btnajout:before {
+    display: none;
+}
+
+.vin-table img {
+    height: 1.5em;
+}
+
+th {
+    font-weight: normal;
+    text-align: left;
+    justify-content: end;
+}
+
+.img {
+    width : 150px;
+    height : 150px;
+}
+
+.trie {
+    color: #e13535;
+}
+
+.vinqts {
+    color: #0f87cf;
+}
+
+.table-container {
+    margin: 3em auto 3em auto;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Largeur de la barre de défilement */
+    scrollbar-color: var(--principal) #f1f1f1;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 12px; /* Largeur de la barre de défilement */
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Couleur de la piste de la barre de défilement */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #ff4c4c; /* Couleur du pouce de la barre de défilement */
+    border-radius: 6px; /* Rayon des coins du pouce */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #ff4c4c; /* Couleur du pouce de la barre de défilement au survol */
+}
+
+.table-container2 {
+    margin: 3em auto 3em auto;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Largeur de la barre de défilement */
+    scrollbar-color: #ff4c4c #f1f1f1;
+}
+
+.table-container2::-webkit-scrollbar {
+    width: 12px; /* Largeur de la barre de défilement */
+}
+
+.table-container2::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Couleur de la piste de la barre de défilement */
+}
+
+.table-container2::-webkit-scrollbar-thumb {
+    background: #ff4c4c; /* Couleur du pouce de la barre de défilement */
+    border-radius: 6px; /* Rayon des coins du pouce */
+}
+
+.table-container2::-webkit-scrollbar-thumb:hover {
+    background: #ff4c4c; /* Couleur du pouce de la barre de défilement au survol */
+}
+
+.descriptionvins {
+    width: 90%;
+    height: 5em;
+    background: var(--secondaire);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.descriptionvins img {
+    height: 3em;
+}
+
+.descriptionvins p {
+    margin-right: auto;
+    text-align: center;
+}
+
+.descriptionvins2 {
+    width: 90%;
+    height: 9em;
+    background: var(--secondaire);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.descriptionvins2 img {
+    height: 3em;
+}
+
+.descriptionvins2 p {
+    margin-right: 15%;
+}
+
+.tabcave {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    border-radius: 1em;
+
+}
+
+.tabcave th, .tabcave td {
+    padding: 0.3em;
+    border: none;
+    border-radius: 1em;
+}
+
+.tabcave th {
+    background-color: var(--secondaire);
+    width: 7em;
+    text-align: left;
+}
+
+.tabcave th:hover {
+    background-color: #f1f1f1;
+}
+
+
+.tabcave td {
+    text-align: center;
+
+}
+
+
+
+.tabcave tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.movvin {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.mov {
+    background-color: var(--secondaire);
+    height: 10em;
+    width: 10em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.mov img {
+    height: 6em;
+    margin: 1em auto auto 2em;
+}
+
+.mov p {
+    margin: auto auto auto 3em;
+
+}
+
+
+.text-red {
+    color: #e13535;
+}
+
+.text-white {
+    color: #c5a95c;
+}
+
+.text-pink {
+    color: #ba7373;
+}
+
+#codeVin {
+    color: #e13535;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+#nomVin {
+    text-decoration: underline;
+}
+
+
+.detailsvin {
+    background-color: var(--secondaire);
+    width: 80%;
+    height: 45em;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+    text-align: center;
+    justify-content: center;
+}
+
+.ratings {
+    background-color: var(--secondaire);
+    border-radius: 1em;
+    width: 30%;
+    margin-left: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.logostar {
+    height: 6em;
+    margin-left: 38%;
+}
+
+
+
+.pagedash h3 {
+    margin-left: 1em;
+}
+
+.headdetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--verylightgrey);
+
+}
+
+.headdetails p {
+    margin: auto auto 1em auto;
+    padding: 1em;
+}
+
+.modifinfo {
+    border: 1px solid var(--verylightgrey);
+}
+
+.infovin {
+    float: left;
+    padding: 1em;
+    text-align: left;
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    border-width: 0;
+    border-right-width: 1px;
+    border-style: solid;
+    border-color: var(--verylightgrey);
+}
+
+.tabinfovin td, .tabinfovin th {
+    padding: 1em;
+}
+
+.btlvin img {
+    filter: drop-shadow(9px 9px 2px rgba(191, 191, 191, 0.81));
+}
+
+.descvin {
+
+    width: 90%;
+    height: 8em;
+}
+
+.descvin p {
+    margin-bottom: 1.5em;
+}
+
+.descvin label {
+    display: none;
+}
+
+.descvin textarea {
+    padding: 1em;
+    width: 100%; /* Assurez-vous que la textarea prend toute la largeur disponible */
+    height: 8em;
+    border: none; /* Supprime la bordure par défaut */
+    background-color: inherit; /* Hérite de la couleur de fond du parent */
+    resize: none;
+    font-family: "Josefin Slab", serif;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+.descvin button {
+    width: 50%;
+    border: none;
+    background-color: var(--verylightgrey);
+    border-radius: 1em;
+    padding: 0.5em;
+    margin: 2% auto auto 30%;
+
+}
+
+
+
+
+.filvin {
+    height: 30em;
+    width: 80%;
+    margin: auto auto auto auto;
+    background-color: var(--secondaire);
+    border-radius: 0.3em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.sort {
+
+    border: none;
+    font-family: "Josefin Slab", serif;
+    text-transform: uppercase;
+}
+
+.titrevins {
+    font-size: 1.5em;
+    color: var(--textbtn);
+}
+
+.headvins {
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.headvins8 {
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.headvins5 {
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.headvins2 {
+    margin-left: 1em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.headvins3 {
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+#vins_modif {
+    margin-top: 4em;
+    text-align: left;
+    margin-left: 2em;
+}
+
+.formmodif {
+    margin-bottom: 10px;
+}
+
+.formmodif label {
+    flex: 1;
+    margin-right: 10px;
+
+}
+
+.formmodif input,
+.formmodif select,
+.formmodif textarea {
+    flex: 2;
+    width: 40%;
+    height: 2em;
+    border-radius: 1em;
+    padding-left: 2em;
+
+}
+
+.btncommande {
+    appearance: none;
+    background-color: var(--principal);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: 1em auto 2em 50%;
+    border-radius: 2em;
+
+}
+
+.header {
+    background-color: var(--secondaire);
+    width: 85%;
+    height: 15em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.header2 {
+    background-color: var(--secondaire);
+    width: 85%;
+    height: auto;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.header4 {
+    background-color: var(--secondaire);
+    width: 85%;
+    height: 15em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+}
+
+.header p {
+    padding-top: 2em;
+    padding-left: 4em;
+    font-size: xx-large;
+}
+
+.header4 p {
+    padding-top: 2em;
+    padding-left: 4em;
+    font-size: xx-large;
+}
+
+.header2 p {
+    padding-top: 0.5em;
+    padding-left: 4em;
+    font-size: xx-large;
+}
+
+.header button {
+    margin-top: 1em;
+    margin-left: 10em;
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    background-color: var(--verylightgrey);
+    font-family: "Josefin Slab", serif;
+}
+
+.header4 button {
+    margin-top: 1em;
+    margin-left: 10em;
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    background-color: var(--verylightgrey);
+    font-family: "Josefin Slab", serif;
+}
+
+.categorie {
+    width: 85%;
+    height: 15em;
+    display: flex;
+    align-items: center;
+    gap: 3em;
+    flex-wrap: wrap;
+}
+
+.box {
+    background-color: var(--secondaire);
+    height: 100%;
+    width: 30%;
+    border: 1px solid var(--verylightgrey);
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+}
+
+.box img {
+    height:12em;
+    margin-left: 4em;
+
+
+}
+
+.box p {
+    margin: auto;
+    text-align: center;
+}
+
+#fournisseur {
+    background-color: var(--secondaire);
+    height: 3em;
+    width: 85%;
+    margin-left: 2em;
+    border-radius: 2em;
+    color: black;
+}
+
+#vins {
+    background-color: var(--secondaire);
+    height: 3em;
+    width: 85%;
+    margin-left: 2em;
+    border-radius: 2em;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+
+.maininfo {
+    background-color: var(--secondaire);
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 80%;
+    height: auto;
+    border-radius: 1em;
+}
+
+.infosfournisseurs {
+    padding: 1em;
+
+}
+.item-fournisseur {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-fournisseur label {
+    flex: 1;
+    height: 1em;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+.item-fournisseur p {
+    flex: 1;
+    border: 1px solid var(--verylightgrey);
+    border-radius: 1em;
+    height: 1em;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+}
+
+.ajoutfour {
+    background-color: var(--secondaire);
+    height: 3em;
+    width: 20%;
+    margin-left: 68%;
+    border-radius: 2em;
+
+}
+
+.ajoutfour p {
+    padding-top: 1em;
+    padding-left: 2em;
+
+}
+
+.vins-list {
+    background-color: var(--secondaire);
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-bottom: 20%;
+    width: 85%;
+    height: 3em;
+    border-radius: 2em;
+
+}
+
+.vins-list h4 {
+    padding: 1em;
+}
+
+.vins-list input {
+    border-radius: 1em;
+    width: 5em;
+    margin-left: auto;
+}
+
+#vins-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+#submit-btn {
+    background: white;
+    border: none;
+    box-shadow: none;
+    border-radius: 2em;
+    width: 20%;
+    margin:2% auto auto 80%;
+    height: 3em;
+    cursor: pointer;
+
+}
+
+#save-btn {
+    background: white;
+    border: none;
+    box-shadow: none;
+    border-radius: 2em;
+    width: 20%;
+    margin:2% auto auto 80%;
+    height: 3em;
+    cursor: pointer;
+
+}
+.vins-list ul {
+    background-color: var(--secondaire);
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-bottom: 10em;
+    width: 91%;
+    height: auto;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+
+
+#submit-button {
+    appearance: none;
+    background-color: var(--principal);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: var(--textbtn) 0 1px 0, var(--boxShadow) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: var(--textbtn);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: auto auto 2em 50%;
+
+}
+
+#save-button {
+    appearance: none;
+    background-color: var(--principal);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: var(--textbtn) 0 1px 0, var(--boxShadow) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: var(--textbtn);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: auto auto 2em 50%;
+
+}
+
+.mescommandes p {
+    font-size: large;
+    border: 1px solid var(--verylightgrey);
+    border-radius: 1em;
+    width: 80%;
+    margin-left: 2em;
+}
+
+.mescommandes {
+    padding-bottom: 3em;
+    margin-left: 2em;
+}
+
+.mescommandes table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mescommandes th, .mescommandes td {
+    padding: 8px;
+}
+
+.mescommandes th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.delete-cell {
+    text-align: right;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button img {
+    vertical-align: middle;
+}
+
+.ajoutfour:hover {
+    background-color: var(--verylightgrey);
+}
+
+.formfournisseurs {
+    background-color: var(--secondaire);
+    width: 80%;
+    height: auto; /* Ajustez la hauteur pour qu'elle soit automatique */
+    margin-top: 2em;
+    gap: 2em;
+    border-radius: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 3em;
+    padding: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+
+}
+
+.formfournisseurs label {
+    display: none;
+}
+
+.formfournisseurs input {
+    padding: 1em; /* Ajustez la largeur pour qu'elle soit la moitié de la div */
+    border-radius: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.left {
+    width: 20em;
+    margin-left: 5em;
+}
+
+.right {
+    width: 20em;
+}
+
+.vin-table img {
+    height: 20px;
+}
+
+.orgastar {
+    display: flex;
+}
+
+.formrecept {
+    background-color: var(--secondaire);
+    width: 80%;
+    height: 20em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2em;
+    margin-top: 5em;
+}
+
+.formrecept label {
+    display: none;
+}
+
+.formrecept button {
+    appearance: none;
+    background-color: var(--verylightgrey);
+    border-radius: 2em;
+    box-shadow: var(--textbtn) 0 1px 0, var(--boxShadow) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: var(--textbtn);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    margin: 1em auto auto 25%;
+
+}
+
+.content-vin {
+    margin: 1em auto auto auto;
+    height: 5em;
+    width: 85%;
+}
+
+
+@media (max-width : 420px) {
+
+    .filvin {
+        font-size: x-small;
+        margin: 1em auto auto 25%;
+        width: auto;
+            height: auto;
+    }
+
+    .btnajout {
+        margin: auto auto 2em 8em;
+
+    }
+
+    .vin-table {
+       width: 100%;
+
+    }
+
+    .vin-table img {
+        height: 2em;
+    }
+
+    .table-container {
+        margin: 3em auto auto 2em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .table-container2 {
+        margin: 3em auto auto 12em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .headvins {
+        margin-left: 15em;
+    }
+
+    .btnajoutref {
+        margin: auto auto 2em -3em;
+    }
+
+    .search {
+        margin-left: 14em;
+    }
+
+    .search2 {
+        margin-left: 5em;
+    }
+
+    .headvins2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .headvins8 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .btncommande {
+        margin: auto;
+    }
+
+    .headvins3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+    }
+
+    .headvins5 {
+        margin-left: 9em;
+    }
+
+    .header2 {
+        width: 100%;
+    }
+
+    .header2 p {
+        padding: 2em;
+    }
+
+    .header4 {
+        width: 100%;
+    }
+
+    .header4 p {
+        padding-left: 1em;
+    }
+
+    .header4 button {
+        margin-left: 3em;
+    }
+
+    .pagedash h3 {
+        margin-left: 0.1em;
+    }
+
+    .descriptionvins {
+        width: 100%;
+    }
+
+    .descriptionvins img {
+        height: 2em;
+    }
+
+    .descriptionvins2 {
+        width: 100%;
+    }
+
+    .categorie {
+        width: 100%;
+        gap: 1em;
+        padding-bottom: 5em;
+    }
+
+    .box {
+        width: 100%;
+        margin: auto auto auto auto;
+    }
+
+    .box img {
+        margin-left: 6em;
+    }
+
+    .selectfournisseur label {
+        margin-left: 3em;
+    }
+
+    .fournisseurs option {
+        width: auto;
+    }
+
+    .ajoutfour {
+        width: 55%;
+        margin-left: 40%;
+    }
+
+    .maininfo {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .item-fournisseur p {
+        font-size: small;
+    }
+
+    .vins-list {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .vins-list ul {
+        width: auto;
+        margin-left: auto;
+    }
+
+    #submit-button {
+        margin: 30% auto 1em 20%;
+    }
+
+    #save-button {
+        margin: auto auto 2em 30%;
+    }
+
+    .vin-table2 td {
+        width: auto;
+
+    }
+
+    .detailsvin {
+        width: 90%;
+        height: 50em;
+    }
+
+    .btlvin {
+        display: none;
+    }
+
+    .titrevins {
+        font-size: large;
+        margin-bottom: 3em;
+    }
+
+}
+
+@media (max-width : 540px) {
+
+    .filvin {
+        font-size: x-small;
+        margin: 1em auto auto 25%;
+        width: auto;
+        height: auto;
+    }
+
+    .btnajout {
+        margin: auto auto 2em 8em;
+
+    }
+
+    .vin-table {
+        width: 100%;
+
+    }
+
+    .vin-table img {
+        height: 2em;
+    }
+
+    .table-container {
+        margin: 3em auto auto 2em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .table-container2 {
+        margin: 3em auto auto 12em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .headvins {
+        margin-left: 15em;
+    }
+
+    .btnajoutref {
+        margin: auto auto 2em -3em;
+    }
+
+    .search {
+        margin-left: 14em;
+    }
+
+    .search2 {
+        margin-left: 5em;
+    }
+
+    .headvins2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .btncommande {
+        margin: auto;
+    }
+
+    .headvins3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+    }
+
+    .headvins5 {
+        margin-left: 9em;
+    }
+
+    .header2 {
+        width: 100%;
+    }
+
+    .header2 p {
+        padding: 2em;
+    }
+
+    .header4 {
+        width: 100%;
+    }
+
+    .header4 p {
+        padding-left: 1em;
+    }
+
+    .header4 button {
+        margin-left: 3em;
+    }
+
+    .pagedash h3 {
+        margin-left: 0.1em;
+    }
+
+    .descriptionvins {
+        width: 100%;
+    }
+
+    .descriptionvins img {
+        height: 2em;
+    }
+
+    .descriptionvins2 {
+        width: 100%;
+    }
+
+    .categorie {
+        width: 100%;
+        gap: 1em;
+        padding-bottom: 5em;
+    }
+
+    .box {
+        width: 100%;
+        margin: auto auto auto auto;
+    }
+
+    .box img {
+        margin-left: 6em;
+    }
+
+    .selectfournisseur label {
+        margin-left: 3em;
+    }
+
+    .fournisseurs option {
+        width: auto;
+    }
+
+    .ajoutfour {
+        width: 55%;
+        margin-left: 40%;
+    }
+
+    .maininfo {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .item-fournisseur p {
+        font-size: small;
+    }
+
+    .vins-list {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .vins-list ul {
+        width: auto;
+        margin-left: auto;
+    }
+
+    #submit-button {
+        margin: 30% auto 1em 20%;
+    }
+
+    #save-button {
+        margin: auto auto 2em 30%;
+    }
+
+    .vin-table2 td {
+        width: auto;
+
+    }
+
+}
+
+@media (max-width : 768px) {
+
+    .filvin {
+        font-size: x-small;
+        margin: 1em auto auto 25%;
+        width: auto;
+        height: auto;
+    }
+
+    .btnajout {
+        margin: auto auto 2em 8em;
+
+    }
+
+    .vin-table {
+        width: 100%;
+
+    }
+
+    .vin-table img {
+        height: 2em;
+    }
+
+    .table-container {
+        margin: 3em auto auto 2em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .table-container2 {
+        margin: 3em auto auto 12em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .headvins {
+        margin-left: 15em;
+    }
+
+    .btnajoutref {
+        margin: auto auto 2em -3em;
+    }
+
+    .search {
+        margin-left: 14em;
+    }
+
+    .search2 {
+        margin-left: 5em;
+    }
+
+    .headvins2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .btncommande {
+        margin: auto;
+    }
+
+    .headvins3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+    }
+
+    .headvins5 {
+        margin-left: 9em;
+    }
+
+    .header2 {
+        width: 100%;
+    }
+
+    .header2 p {
+        padding: 2em;
+    }
+
+    .header4 {
+        width: 100%;
+    }
+
+    .header4 p {
+        padding-left: 1em;
+    }
+
+    .header4 button {
+        margin-left: 3em;
+    }
+
+    .pagedash h3 {
+        margin-left: 0.1em;
+    }
+
+    .descriptionvins {
+        width: 100%;
+    }
+
+    .descriptionvins img {
+        height: 2em;
+    }
+
+    .descriptionvins2 {
+        width: 100%;
+    }
+
+    .categorie {
+        width: 100%;
+        gap: 1em;
+        padding-bottom: 5em;
+    }
+
+    .box {
+        width: 100%;
+        margin: auto auto auto auto;
+    }
+
+    .box img {
+        margin-left: 6em;
+    }
+
+    .selectfournisseur label {
+        margin-left: 3em;
+    }
+
+    .fournisseurs option {
+        width: auto;
+    }
+
+    .ajoutfour {
+        width: 55%;
+        margin-left: 40%;
+    }
+
+    .maininfo {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .item-fournisseur p {
+        font-size: small;
+    }
+
+    .vins-list {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .vins-list ul {
+        width: auto;
+        margin-left: auto;
+    }
+
+    #submit-button {
+        margin: 30% auto 1em 20%;
+    }
+
+    #save-button {
+        margin: auto auto 2em 30%;
+    }
+
+    .vin-table2 td {
+        width: auto;
+
+    }
+
+}
+
+@media (max-width : 820px) {
+
+    .filvin {
+        font-size: x-small;
+        margin: 1em auto auto 25%;
+        width: auto;
+        height: auto;
+    }
+
+    .btnajout {
+        margin: auto auto 2em 8em;
+
+    }
+
+    .vin-table {
+        width: 100%;
+
+    }
+
+    .vin-table img {
+        height: 2em;
+    }
+
+    .table-container {
+        margin: 3em auto auto 2em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .table-container2 {
+        margin: 3em auto auto 12em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .headvins {
+        margin-left: 15em;
+    }
+
+    .btnajoutref {
+        margin: auto auto 2em -3em;
+    }
+
+    .search {
+        margin-left: 14em;
+    }
+
+    .search2 {
+        margin-left: 5em;
+    }
+
+    .headvins2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .btncommande {
+        margin: auto;
+    }
+
+    .headvins3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+    }
+
+    .headvins5 {
+        margin-left: 9em;
+    }
+
+    .header2 {
+        width: 100%;
+    }
+
+    .header2 p {
+        padding: 2em;
+    }
+
+    .header4 {
+        width: 100%;
+    }
+
+    .header4 p {
+        padding-left: 1em;
+    }
+
+    .header4 button {
+        margin-left: 3em;
+    }
+
+    .pagedash h3 {
+        margin-left: 0.1em;
+    }
+
+    .descriptionvins {
+        width: 100%;
+    }
+
+    .descriptionvins img {
+        height: 2em;
+    }
+
+    .descriptionvins2 {
+        width: 100%;
+    }
+
+    .categorie {
+        width: 100%;
+        gap: 1em;
+        padding-bottom: 5em;
+    }
+
+    .box {
+        width: 100%;
+        margin: auto auto auto auto;
+    }
+
+    .box img {
+        margin-left: 6em;
+    }
+
+    .selectfournisseur label {
+        margin-left: 3em;
+    }
+
+    .fournisseurs option {
+        width: auto;
+    }
+
+    .ajoutfour {
+        width: 55%;
+        margin-left: 40%;
+    }
+
+    .maininfo {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .item-fournisseur p {
+        font-size: small;
+    }
+
+    .vins-list {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .vins-list ul {
+        width: auto;
+        margin-left: auto;
+    }
+
+    #submit-button {
+        margin: 30% auto 1em 20%;
+    }
+
+    #save-button {
+        margin: auto auto 2em 30%;
+    }
+
+    .vin-table2 td {
+        width: auto;
+
+    }
+
+}
+
+@media (max-width : 1180px) {
+
+    .filvin {
+        font-size: x-small;
+        margin: 1em auto auto 25%;
+        width: auto;
+        height: auto;
+    }
+
+    .btnajout {
+        margin: auto auto 2em 8em;
+
+    }
+
+    .vin-table {
+        width: 100%;
+
+    }
+
+    .vin-table img {
+        height: 2em;
+    }
+
+    .table-container {
+        margin: 3em auto auto 2em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .table-container2 {
+        margin: 3em auto auto 12em;
+        font-size: x-small;
+        height: 50em;
+    }
+
+    .headvins {
+        margin-left: 15em;
+    }
+
+    .btnajoutref {
+        margin: auto auto 2em -3em;
+    }
+
+    .search {
+        margin-left: 14em;
+    }
+
+    .search2 {
+        margin-left: 5em;
+    }
+
+    .headvins2 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .btncommande {
+        margin: auto;
+    }
+
+    .headvins3 {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+
+    }
+
+    .headvins5 {
+        margin-left: 9em;
+    }
+
+    .header2 {
+        width: 100%;
+    }
+
+    .header2 p {
+        padding: 2em;
+    }
+
+    .header4 {
+        width: 100%;
+    }
+
+    .header4 p {
+        padding-left: 1em;
+    }
+
+    .header4 button {
+        margin-left: 3em;
+    }
+
+    .pagedash h3 {
+        margin-left: 0.1em;
+    }
+
+    .descriptionvins {
+        width: 100%;
+    }
+
+    .descriptionvins img {
+        height: 2em;
+    }
+
+    .descriptionvins2 {
+        width: 100%;
+    }
+
+    .categorie {
+        width: 100%;
+        gap: 1em;
+        padding-bottom: 5em;
+    }
+
+    .box {
+        width: 100%;
+        margin: auto auto auto auto;
+    }
+
+    .box img {
+        margin-left: 6em;
+    }
+
+    .selectfournisseur label {
+        margin-left: 3em;
+    }
+
+    .fournisseurs option {
+        width: auto;
+    }
+
+    .ajoutfour {
+        width: 55%;
+        margin-left: 40%;
+    }
+
+    .maininfo {
+        width: auto;
+        margin-left: auto;
+    }
+
+    .item-fournisseur p {
+        font-size: small;
+    }
+
+    .vins-list {
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .vins-list ul {
+        width: auto;
+        margin-left: auto;
+    }
+
+    #submit-button {
+        margin: 30% auto 1em 20%;
+    }
+
+    #save-button {
+        margin: auto auto 2em 30%;
+    }
+
+    .vin-table2 td {
+        width: auto;
+
+    }
+
+}

@@ -1,0 +1,84 @@
+.registerform {
+    background-color: var(--secondaire);
+    width: 40%;
+    height: 50%;
+    margin: 5em auto auto auto;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--boxShadow);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registerform label {
+    display: none;
+}
+
+.registerform input {
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    border: none;
+    box-shadow: 2px 2px 4px var(--verylightgrey);
+    padding-left: 1em;
+}
+
+.registerform form {
+    width: 80%;
+}
+
+.btnetab {
+    margin: 1em auto auto 40%;
+    width: 20%;
+    padding: 0.5em;
+    background-color: var(--secondaire);
+    border-radius: 1em;
+    box-shadow: 2px 2px 4px var(--verylightgrey);
+    border: none;
+    cursor: pointer;
+}
+
+.btnetab:hover {
+    background-color: var(--verylightgrey);
+}
+
+@media (max-width : 420px) {
+
+    .registerform {
+        width: 80%;
+    }
+
+}
+@media (max-width : 540px) {
+
+    .registerform {
+        width: 80%;
+    }
+
+}
+@media (max-width : 768px) {
+
+    .registerform {
+        width: 80%;
+    }
+
+}
+@media (max-width : 820px) {
+
+    .registerform {
+        width: 80%;
+    }
+
+}
+
+@media (max-width : 1180px) {
+
+    .registerform {
+        width: 80%;
+    }
+
+}

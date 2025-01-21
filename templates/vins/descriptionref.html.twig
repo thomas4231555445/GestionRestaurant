@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+{% block body %}
+<div class="pagedash">
+    {%  for vin in vins %}
+    <h3>{{ vin.domaine }} - {{ vin.appellation }} - {{ vin.nomVin }} - {{ vin.millesime }}</h3>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+        {% endfor %}
+    {% endfor %}
+    <div class="detailsvin">
+        <div class="headdetails">
+            <p>Informations</p>
+            <p class="modifinfo"><a href="{{path('descriptionrefother', { 'id': vin.id })}}">Modifier Informations</a></p>
+        </div>
+        <div class="infovin">
+            <table class="tabinfovin">
+                <tbody>
+                <tr>
+                    <th><strong>Couleur:</strong></th>
+                    <td>{{ vin.couleur }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Type:</strong></th>
+                    <td>{{ vin.type }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Appellation:</strong></th>
+                    <td>{{ vin.appellation }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Nom Producteur:</strong></th>
+                    <td>{{ vin.nomProducteur }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Domaine:</strong></th>
+                    <td>{{ vin.domaine }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Nom Vin:</strong></th>
+                    <td>{{ vin.nomVin }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Cl:</strong></th>
+                    <td>{{ vin.cl }}</td>
+                </tr>
+                <tr>
+                    <th><strong>Millesime:</strong></th>
+                    <td>{{ vin.millesime }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="descvin">
+                {% if description %}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button >{{ 'Ajouter la description'|trans }}</button>
+                    {{ form_end(form) }}
+
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="btlvin">
+
+            <img src="{{ asset('img/btlvin.png') }}" alt="bouteille vin" >
+            
+        </div>
+
+
+{% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

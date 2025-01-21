@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+        <div class="headvins2">
+            <h3 class="titrevins" style="margin-left: 3em">Nouveau Fournisseur</h3>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        <div class="selectfournisseur">
+
+        </div>
+
+        <div class="top">
+            <h4 style="margin-left: 4em">Société :</h4>
+        </div>
+        <div class="formfournisseurs">
+
+            <div class="left">
+            {{ form_start(form) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.siren) }}
+            {{ form_row(form.telephone) }}
+            {{ form_row(form.mail) }}
+            </div>
+            <div class="right">
+            {{ form_row(form.pays) }}
+            {{ form_row(form.adresse) }}
+            {{ form_row(form.code_postale) }}
+            {{ form_row(form.ville) }}
+            </div>
+
+            <div class="left">
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.nom_famille) }}
+            </div>
+            <div class="right">
+            {{ form_row(form.telephoneperso) }}
+            {{ form_row(form.mailperso) }}
+
+                <button class="btndash">Create !</button>
+            {{ form_end(form) }}
+            </div>
+        </div>
+
+
+
+    </div>
+
+{% endblock %}

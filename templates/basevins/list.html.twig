@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Base de données Vins</h1>
+
+
+
+<div class="search" id="search-container" style="text-align: center" >
+    <label for="site-search">Rechercher dans la base : </label>
+    <input type="search" id="site-search" name="search" />
+</div>
+<div class="filvin">
+<div class="table-container" id="table-container">
+    <table class="vin-table">
+        <thead>
+        <tr>
+            <th>Couleur</th>
+            <th class="vinth">Type</th>
+            <th>Appelation</th>
+            <th>Nom Producteur</th>
+            <th class="vinth">Domaine</th>
+            <th>Nom Vin</th>
+            <th>cl</th>
+
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for basevin in basevins %}
+                <tr>
+                    <td>{{ basevin.couleur }}</td>
+                    <td class="vinth">{{ basevin.type }}</td>
+                    <td>{{ basevin.appellation }}</td>
+                    <td>{{ basevin.nomProducteur }}</td>
+                    <td class="vinth">{{ basevin.domaine }}</td>
+                    <td>{{ basevin.nomVin }}</td>
+                    <td>{{ basevin.cl }}</td>
+
+
+                    <td><a href="{{ path('base_vins_description', {'id': basevin.id}) }}"><img src="{{ asset('img/plusicon.png') }}" alt="Boutton plus" style="height: 20px" class="plus-icon"></a></td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+</div>
+    <script src="{{ asset('js/search.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+
+{% block body %}
+
+
+
+    <div class="pagedash">
+{# ---------------------------------- #}
+    <div class="headvins3">
+    <h3 class="titrevins">Description Vins</h3>
+
+    </div>
+    <div class="orgastar">
+    <div class="detailsvin">
+
+        <p><strong>Couleur :</strong> {{ basevins.couleur }}</p>
+        <p><strong>Type :</strong> {{ basevins.type }}</p>
+        <p><strong>Appellation :</strong> {{ basevins.appellation }}</p>
+        <p><strong>Nom Producteur :</strong> {{ basevins.nomProducteur }}</p>
+        <p><strong>Domaine :</strong> {{ basevins.domaine }}</p>
+        <p><strong>Nom Vin :</strong> {{ basevins.nomVin }}</p>
+        <p><strong>Cl :</strong> {{ basevins.cl }}</p>
+        <p><strong>Millesime :</strong> {{ basevins.millesime }}</p>
+        <p><strong>Description :</strong> {{ basevins.description }}</p>
+        </div>
+
+
+        <div class="ratings">
+
+            <ul>
+                {% for star in stars %}
+                    <li style="display: none">{{ star.star }}</li>
+                {% endfor %}
+            </ul>
+            <img src="{{ asset('img/starok.png') }}" alt="logo star" class="logostar">
+            <p style="text-align: center"><strong>Notes :</strong> {{ averageRating }} / 5</p>
+            <div class="rating-bar">
+                <div class="rating-bar-fill" style="width: {{ averageRating * 20 }}%;"></div>
+            </div>
+
+    <div class="likeornottwo" id="likeornot">
+        <img src="{{ asset('img/note.png') }}" alt="pouce like" id="btnlike">
+        <a href="{{ path('app_star', {'id': basevins.id}) }}">Mettre une Note !</a>
+    </div>
+        </div>
+        </div>
+    </div>
+
+
+{% endblock %}

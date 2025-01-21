@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+        {%  for fournisseur in fournisseurs %}
+        <h3>{{ fournisseur.nom }} - {{ fournisseur.prenom }} - {{ fournisseur.nomFamille }} - {{ fournisseur.telephoneperso }}</h3>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+            {% endfor %}
+        {% endfor %}
+        <div class="detailsvin">
+            <div class="headdetails">
+                <p>Informations</p>
+                <p class="modifinfo"><a href="{{path('descriptionfourother', { 'id': fournisseur.id })}}">Modifier Informations</a></p>
+            </div>
+            <div class="infovin">
+                <table class="tabinfovin">
+                    <tbody>
+                    <tr>
+                        <th><strong>Nom Societe:</strong></th>
+                        <td>{{ fournisseur.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Interlocuteur:</strong></th>
+                        <td>{{ fournisseur.prenom }} {{ fournisseur.nomFamille }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Telephone:</strong></th>
+                        <td>{{ fournisseur.telephoneperso }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Mail:</strong></th>
+                        <td>{{ fournisseur.mailperso }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Adresse:</strong></th>
+                        <td>{{ fournisseur.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Ville:</strong></th>
+                        <td>{{ fournisseur.ville }}</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Code postale:</strong></th>
+                        <td>{{ fournisseur.codepostale }}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

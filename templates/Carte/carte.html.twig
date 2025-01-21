@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+
+        <div class="headvins5">
+            <h3 class="titrevins">Ma Carte</h3>
+
+        </div>
+
+        {{ form_start(carteForm) }}
+        {{ form_row(carteForm.name) }}
+        {{ form_row(carteForm.id_restaurant) }}
+        {{ form_row(carteForm.background) }}
+        {{ form_row(carteForm.logo) }}
+        {{ form_row(carteForm.nom_etablissement) }}
+        {{ form_row(carteForm.selection) }}
+        <button type="submit" id="submit-btn" >Créer la carte</button>
+        {{ form_end(carteForm) }}
+
+
+    </div>
+{% endblock %}

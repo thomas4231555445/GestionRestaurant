@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+        {% endfor %}
+    {% endfor %}
+    <h1>{{ etablissement.nomRestaurant }}</h1>
+    <div id="infoEtablissement">
+    <p><label id="labelEtablissement" for="">Adresse:</label> {{ etablissement.adresse }}</p>
+    <p><label id="labelEtablissement" for="">Code Postal:</label> {{ etablissement.codePostale }}</p>
+    <p><label id="labelEtablissement" for="">Ville:</label> {{ etablissement.ville }}</p>
+    <p><label id="labelEtablissement" for="">Téléphone:</label> {{ etablissement.telephone }}</p>
+        <a href="{{ path('app_create') }}"><button class="btnmodifetab">Modifier</button></a>
+    </div>
+
+{% endblock %}

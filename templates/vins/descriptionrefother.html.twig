@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+{% block body %}
+<div class="pagedash">
+
+    <a href="{{path('descriptionref', { 'id': vins.id })}}"><img src="{{ asset('img/fleches.png') }}" alt="fleche retour" style="height: 3em;"></a>
+
+    <h3>{{ vins.domaine }} - {{ vins.appellation }} - {{ vins.nomVin }} - {{ vins.millesime }}</h3>
+
+    <div class="detailsvin">
+
+    {{ form_start(form) }}
+        <div class="formmodif">
+    {{ form_row(form.couleur) }}
+        </div><div class="formmodif">
+        {{ form_row(form.type) }}
+</div><div class="formmodif">
+        {{ form_row(form.appellation) }}
+</div><div class="formmodif">
+        {{ form_row(form.nom_producteur) }}
+</div><div class="formmodif">
+        {{ form_row(form.domaine) }}
+</div><div class="formmodif">
+        {{ form_row(form.nom_vin) }}
+</div><div class="formmodif">
+        {{ form_row(form.cl) }}
+</div><div class="formmodif">
+        {{ form_row(form.millesime) }}
+</div>
+
+    <button class="btnformcave">{{ 'Create'|trans }}</button>
+    {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}

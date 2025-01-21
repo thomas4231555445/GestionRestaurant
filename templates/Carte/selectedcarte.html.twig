@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+
+    <style>
+
+        td {
+            padding: 2em;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        th {
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+    <div class="pagedash">
+
+        <div class="headvins5">
+
+
+        </div>
+
+        <div>
+
+            {% for macarte in macartes %}
+                <div class="orgarefcave">
+                    <div class="refcarte" style="background-color: {{ macarte.background }}; width: auto; height: auto">
+                            <h2 >{{ macarte.name }}</h2>
+                            <h2 >{{ macarte.nomEtablissement }}</h2>
+                        <h4>{{ macarte.selection | raw }}</h4>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

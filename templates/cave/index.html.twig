@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="pagedash">
+
+    <div class="headvins5">
+        <h3 class="titrevins">Mes Caves</h3>
+
+    </div>
+
+    <div class="boxcave">
+        <img src="{{ asset('img/caveavin.png') }}" alt="logo mes vins">
+    <a href="{{ path('cave_ajout') }}"><button >Ajouter une cave</button></a>
+    </div>
+
+    {% for cave in caves %}
+    <div class="orgarefcave">
+        <div class="refcave">
+            <a href="{{ path('ma_cave', { 'id': cave.id }) }}">
+            <img src="{{ asset('img/casier.png') }}" alt="logo mes vins">
+            <h4 >{{ cave.numCave }}</h4></a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

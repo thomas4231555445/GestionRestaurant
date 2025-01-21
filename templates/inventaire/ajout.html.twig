@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="forminvent">
+        <p>Ajouter Vin</p>
+
+        {{ form_start(inventaireForm) }}
+
+        {{ form_row(inventaireForm.id_restaurant, {
+            'attr': {
+                'id': 'id_restaurant_field'
+            }
+        }) }}
+
+        {{ form_row(inventaireForm.code_vin, {
+            'attr': {
+                'id': 'code_vin_form'
+            }
+           }) }}
+
+        {{ form_row(inventaireForm.qts, {
+            'attr': {
+                'id': 'qts_field'
+            }
+        }) }}
+
+        {{ form_row(inventaireForm.date_enregistrement, {
+            'attr': {
+                'id': 'date_enregistrement_field',
+            }
+        }) }}
+
+        <button class="btn">{{ 'Ajouter'|trans }}</button>
+
+        {{ form_end(inventaireForm) }}
+
+        <button id="start-scanner" class="btn">Démarrer le scanner</button>
+
+    </div>
+
+    <div id="scanner-container"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('start-scanner').addEventListener('click', function() {
+                Quagga.init({
+                    inputStream: {
+                        type: "LiveStream",
+                        constraints: {
+                            width: 640,
+                            height: 480,
+                            facingMode: "environment" // "user" pour un ordinateur // Utiliser la caméra frontale de l'ordinateur
+                        },
+                        target: document.querySelector('#scanner-container') // Assurez-vous que le conteneur est défini
+                    },
+                    decoder: {
+                        readers: ["code_128_reader"] // Utiliser le lecteur de code-barres approprié
+                    }
+                }, function(err) {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    console.log("Quagga initialisé avec succès.");
+                    Quagga.start();
+                });
+
+                Quagga.onDetected(function(result) {
+                    var code = result.codeResult.code;
+                    console.log("Code détecté: " + code);
+                    // Vous pouvez maintenant utiliser le code scanné pour remplir le formulaire ou effectuer d'autres actions
+                    var inputField = document.getElementById('inventaire_code_vin');
+                    if (inputField) {
+                        inputField.value = code;
+
+
+                    } else {
+                        console.error("Le champ de formulaire pour le code vin n'a pas été trouvé.");
+                    }
+                    Quagga.stop(); // Arrêter le scanner après avoir détecté un code
+                });
+
+
+                });
+
+        });
+    </script>
+
+{% endblock %}

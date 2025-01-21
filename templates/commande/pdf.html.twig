@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commande</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+<h1>Commande</h1>
+<h2>Informations du fournisseur</h2>
+<p><strong>Nom:</strong> {{ fournisseur.nom }}</p>
+<p><strong>Siren:</strong> {{ fournisseur.siren }}</p>
+<p><strong>Adresse:</strong> {{ fournisseur.adresse }}</p>
+<p><strong>Code Postale:</strong> {{ fournisseur.codePostale }}</p>
+<p><strong>Ville:</strong> {{ fournisseur.ville }}</p>
+<p><strong>Prenom:</strong> {{ fournisseur.prenom }}</p>
+<p><strong>Nom:</strong> {{ fournisseur.nomFamille }}</p>
+<p><strong>Telephone:</strong> {{ fournisseur.telephoneperso }}</p>
+<p><strong>Mail:</strong> {{ fournisseur.mailperso }}</p>
+
+<h2>Liste des vins</h2>
+<table>
+    <tr>
+        <th>Nom du vin</th>
+        <th>Quantité</th>
+    </tr>
+    {% for vin in vins %}
+        <tr>
+            <td>{{ vin.name }}</td>
+            <td>{{ vin.quantity }} Bouteille(s)</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

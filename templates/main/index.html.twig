@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Lobster&display=swap" rel="stylesheet">
+
+
+    <div class="mainwelcome">
+        <div class="heardwelcome">
+            <img src="{{ asset('img/topwel.png') }}" alt="banniere top page welcome">
+
+        </div>
+        <div class="boxwelcome">
+            <p class="titlebox">Solution Gratuite</p>
+            <p class="parabox">Faire de votre business une organisation juste et réduisant la perte de temps de vos collaborateurs tout en améliorant leurs performances !</p>
+        </div>
+        <div class="boxxwelcome">
+            <div class="boxwelcomein">
+                <p class="titrewelcome">Gestion des vins</p>
+                <img src="{{ asset('img/organisation.png') }}" alt="">
+                <p class="paragraphe">bla oiur odhbb elize zdduerf jpef a"ergayi"r ^pgbhz"r uiu'buz'</p>
+            </div>
+            <div class="boxwelcomein">
+            <p class="titrewelcome">Inventaire rapide</p>
+                <img src="{{ asset('img/invwel.png') }}" alt="">
+                <p class="paragraphe">bla oiur odhbb elize zdduerf jpef a"ergayi"r ^pgbhz"r uiu'buz'</p>
+            </div>
+            <div class="boxwelcomein">
+                <p class="titrewelcome">Commandes</p>
+                <img src="{{ asset('img/comwe.png') }}" alt="">
+                <p class="paragraphe">bla oiur odhbb elize zdduerf jpef a"ergayi"r ^pgbhz"r uiu'buz'</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Copyright</p>
+            <p>RGPD</p>
+            <p>Contact</p>
+        </div>
+
+    </div>
+{% endblock %}

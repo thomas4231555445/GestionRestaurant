@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des établissements</h1>
+    <ul>
+        {% for etablissement in etablissements %}
+            <li>
+                    <h2>{{ etablissement.nomRestaurant }}</h2>
+                    <p>Adresse: {{ etablissement.adresse }}</p>
+                    <p>Code Postal: {{ etablissement.codePostale }}</p>
+                    <p>Ville: {{ etablissement.ville }}</p>
+                    <p>Téléphone: {{ etablissement.telephone }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

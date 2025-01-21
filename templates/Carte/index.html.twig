@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+
+        <div class="headvins5">
+            <h3 class="titrevins">Mes Cartes</h3>
+
+        </div>
+
+        <div class="boxcave">
+            <img src="{{ asset('img/caveavin.png') }}" alt="logo mes vins">
+            <a href="{{ path('carte') }}"><button >Ajouter une carte</button></a>
+        </div>
+
+        <div>
+            {% for carte in cartes %}
+                <div class="orgarefcave">
+                    <div class="refcave">
+                        <a href="{{ path('selectedcarte', { 'id': carte.id }) }}">
+                            <img src="{{ asset('img/casier.png') }}" alt="logo mes vins">
+                            <h4 >{{ carte.name }}</h4></a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+
+    </div>
+{% endblock %}

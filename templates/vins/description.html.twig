@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="pagedash">
+        <h3 class="titrevins">Mouvements Stock</h3>
+        <div class="descriptionvins">
+
+            {%  for vin in vins %}
+                {% if vin.couleur == 'Rouges' %}<img src="{{ asset('img/feur.png') }}" alt="">
+                {% elseif vin.couleur == 'Blancs' %}<img src="{{ asset('img/feub.png') }}" alt="">
+                {% elseif vin.couleur == 'Roses' %}<img src="{{ asset('img/feuro.png') }}" alt="">
+                {% elseif vin.couleur == 'Petillants' %}<img src="{{ asset('img/feub.png') }}" alt="">
+                {% elseif vin.couleur == 'Petillants Roses' %}<img src="{{ asset('img/feuro.png') }}" alt="">{% endif %}
+                <p><span  class="vinth">{{ vin.domaine }} - {{ vin.appellation }} - </span>{{ vin.nomVin }} - {{ vin.millesime }}</p>
+                <p class="vinth">{{ vin.cl }} Cl</p>
+                <p>{{ vin.codeVin }}</p>
+                <p>{{ vin.stock|default('-') }} <span  class="vinth">en stock</span></p>
+
+                {% endfor %}
+        </div>
+        <div class="descriptionvins2">
+            <table class="tabcave">
+                    <tbody>
+                    <tr>
+                        <th>Nom Cave</th>
+                        {% for vinCave in vinsCave %}
+                            <td>{{ cavesArray[vinCave.id_cave]|default('Non Présent en Cave') }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>Ligne</th>
+                        {% for vinCave in vinsCave %}
+                            <td>{{ vinCave.ligne }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th>Colonne</th>
+                        {% for vinCave in vinsCave %}
+                            <td>{{ vinCave.colonne }}</td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="movvin">
+            <div class="mov">
+                {%  for vin in vins %}
+            <a href="{{ path('ajout_vins_recu', { 'id': vin.id }) }}"><img src="{{ asset('img/recept.png') }}" alt="Boutton plus"></a>
+                {% endfor %}
+                <p>Reception</p>
+            </div>
+            <div class="mov">
+                {%  for vin in vins %}
+                <a href="{{ path('enleve_vins_recu', { 'id': vin.id }) }}"><img src="{{ asset('img/sort.png') }}" alt="Boutton plus"></a>
+                {% endfor %}
+                <p>Sortir</p>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

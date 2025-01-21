@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+{% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="pagedash">
+    <main class="main-view-vin">
+        <div class="headvins">
+        <h3 class="titrevins">Mes Vins</h3>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+            {% endfor %}
+        {% endfor %}
+        <button class="btnajoutref"><a href={{ path('ajout_vins') }}> + AJOUTER DES REFERENCES</a></button>
+        </div>
+    <div class="search">
+        <label for="site-search">Le nom contient:</label>
+        <input type="search" id="site-search" name="search" placeholder="Rechercher"/>
+    </div>
+        <div class="filvin">
+
+    <div class="table-container">
+        <table class="vin-table">
+            <thead>
+            <tr>
+                <th id="codeVin">Code Vin</th>
+                <th class="vinth"></th>
+                <th style="display: none">Nom Producteur</th>
+                <th>Description</th>
+                <th class="vinth">Contenant</th>
+                <th>Stock</th>
+                <th style="display: none">Prix d'achat HT</th>
+                <th></th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            {% if vins is not empty %}
+
+            {%  for vin in vins %}
+        <tr>
+            <td id="codeVin">{{ vin.codeVin }}</td>
+            <td  class="vinth">{% if vin.couleur == 'Rouges' %}<img src="{{ asset('img/feur.png') }}" alt="">
+                {% elseif vin.couleur == 'Blancs' %}<img src="{{ asset('img/feub.png') }}" alt="">
+                {% elseif vin.couleur == 'Roses' %}<img src="{{ asset('img/feuro.png') }}" alt="">
+            {% elseif vin.couleur == 'Petillants' %}<img src="{{ asset('img/feub.png') }}" alt="">
+            {% elseif vin.couleur == 'Petillants Roses' %}<img src="{{ asset('img/feuro.png') }}" alt="">{% endif %}</td>
+            <td style="display: none">{{ vin.nomProducteur }}</td>
+            <td><a href="{{path('descriptionref', { 'id': vin.id })}}"><span class="vinth">{{ vin.domaine }} - {{ vin.appellation }} - </span>{{ vin.nomVin }} - {{ vin.millesime }}</a></td>
+            <td class="vinth" style="text-align: center;">{{ vin.cl }} Cl</td>
+            <td style="text-align: right;">{{ vin.stock|default('-') }}</td>
+            <td style="display: none">{{ vin.prixAchatHt }}</td>
+            <td><a href="{{ path('vins_description', { 'id': vin.id }) }}"><img src="{{ asset('img/recept.png') }}" alt="Boutton plus" ></a>
+            <a href="{{ path('app_notes_create', { 'id': vin.id }) }}"><img src="{{ asset('img/sort.png') }}" alt="Boutton plus" ></a></td>
+        </tr>
+
+            {% endfor %}
+            {% else %}
+                <tr>
+                <td colspan="3">Aucun vin trouvé.</td>
+                </tr>
+            {% endif %}
+
+
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+        <button class="btnexport"><a href="{{ path('vins_export') }}"> Télécharger en Excel</a></button>
+
+
+    </main>
+
+</div>
+            <script src="{{ asset('js/search.js') }}"></script>
+{% endblock %}
+

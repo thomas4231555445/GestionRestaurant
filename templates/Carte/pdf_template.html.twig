@@ -1,0 +1,79 @@
+{# templates/pdf/pdf_template.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+        .pagedash {
+            padding: 20px;
+        }
+        .refcave {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .titrevins {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        h4 {
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="pagedash">
+    {% for macarte in macartes %}
+        <div class="refcave" style="background-color: {{ macarte.background }}">
+            <h4>{{ macarte.name }}</h4>
+            <h4>{{ macarte.nomEtablissement }}</h4>
+            <div>{{ macarte.selection | raw }}</div>
+
+            <!-- Vous pouvez aussi afficher vos données dans un tableau si nécessaire -->
+            <table>
+                <thead>
+                <tr>
+                    <th>Nom Producteur</th>
+                    <th>Nom Vin</th>
+                    <th>Millésime</th>
+                    <th>Cl</th>
+                    <th>Prix Vente TTC</th>
+                    <th>Couleur</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for vin in macarte.selection %}
+                    <tr>
+                        <td>{{ vin.nomProducteur }}</td>
+                        <td>{{ vin.nomVin }}</td>
+                        <td>{{ vin.millesime }}</td>
+                        <td>{{ vin.cl }}</td>
+                        <td>{{ vin.prixVenteTTC }}</td>
+                        <td>{{ vin.couleur }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+</div>
+</body>
+</html>

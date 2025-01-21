@@ -1,0 +1,276 @@
+.paramcontainer {
+    transition: width 0.3s ease;
+    width: 250px; /* Largeur par défaut de la sidebar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--secondaire); /* Couleur de fond de la sidebar */
+    z-index: 1000;
+}
+
+.paramcontainer button {
+    width: 70%;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: auto auto auto 1.7em ;
+    text-transform: uppercase;
+    color: var(--lightgrey);
+    border: none;
+    background-color: var(--secondaire);
+    cursor: pointer;
+}
+
+.paramcontainer button:hover {
+    background-color: var(--hover);
+}
+
+.paramcontainer img {
+    height: 2.5em;
+    margin-right: 1em;
+
+}
+
+.paramcontainer h2 {
+
+}
+
+.parambtn {
+
+}
+
+.paramcontainer {
+    transition: width 0.3s;
+}
+
+.paramcontainer.reduced {
+    width: 6em;
+}
+
+.paramcontainer.reduced .titleparam {
+    display: none;
+}
+
+.paramcontainer.reduced ~ .profil {
+    margin-left: 10em; /* Ajustez la marge gauche lorsque le paramcontainer est réduit */
+}
+
+
+@media (max-width : 420px) {
+
+    .paramcontainer {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 1em;
+
+    }
+
+    .paramcontainer.reduced a {
+        display: none;
+        width: 5%;
+        background-color: var(--secondaire);
+    }
+
+    .paramcontainer.reduced {
+        background-color: transparent;
+        height: 5%;
+    }
+
+    #homeimglogo{
+        display: none;
+    }
+
+    .paramcontainer img {
+        height: 1.5em;
+        margin-right: 0.5em;
+    }
+
+    #toggleArrow {
+        height: 2.5em;
+    }
+
+    #toggleArrowReduced {
+        height: 2.5em;
+        margin-right: 3.5em;
+        filter: opacity(30%);
+    }
+}
+
+@media (max-width : 540px) {
+
+    .paramcontainer {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 1em;
+
+    }
+
+    .paramcontainer.reduced a {
+        display: none;
+        width: 5%;
+        background-color: var(--secondaire);
+    }
+
+    .paramcontainer.reduced {
+        background-color: transparent;
+        height: 5%;
+    }
+
+    #homeimglogo{
+        display: none;
+    }
+
+
+
+
+    .paramcontainer img {
+        height: 1.5em;
+        margin-right: 0.5em;
+    }
+
+    #toggleArrow {
+        height: 2.5em;
+    }
+
+    #toggleArrowReduced {
+        height: 2.5em;
+        margin-right: 3.5em;
+        filter: opacity(30%);
+    }
+}
+
+@media (max-width : 768px) {
+
+    .paramcontainer {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 1em;
+
+    }
+
+    .paramcontainer.reduced a {
+        display: none;
+        width: 5%;
+        background-color: var(--secondaire);
+    }
+
+    .paramcontainer.reduced {
+        background-color: transparent;
+        height: 5%;
+    }
+
+    #homeimglogo{
+        display: none;
+    }
+
+    #toggleArrow {
+        height: 2.5em;
+    }
+
+    #toggleArrowReduced {
+        height: 2.5em;
+        margin-right: 3.5em;
+        filter: opacity(30%);
+    }
+
+
+
+    .paramcontainer img {
+        height: 1.5em;
+        margin-right: 0.5em;
+    }
+}
+
+@media (max-width : 820px) {
+
+    .paramcontainer {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 1em;
+
+    }
+
+    .paramcontainer.reduced a {
+        display: none;
+        width: 5%;
+        background-color: var(--secondaire);
+    }
+
+    .paramcontainer.reduced {
+        background-color: transparent;
+        height: 5%;
+    }
+
+    #homeimglogo{
+        display: none;
+    }
+
+    #toggleArrow {
+        height: 2.5em;
+    }
+
+    #toggleArrowReduced {
+        height: 2.5em;
+        margin-right: 3.5em;
+        filter: opacity(30%);
+    }
+
+
+    .paramcontainer img {
+        height: 1.5em;
+        margin-right: 0.5em;
+    }
+}
+
+@media (max-width : 1180px) {
+
+    .paramcontainer {
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        padding: 1em;
+
+    }
+
+    .paramcontainer button {
+        width: 100%;
+    }
+
+    .paramcontainer.reduced a {
+        display: none;
+        width: 5%;
+        background-color: var(--secondaire);
+    }
+
+    .paramcontainer.reduced {
+        background-color: transparent;
+        height: 5%;
+    }
+
+    #homeimglogo{
+        display: none;
+    }
+
+    #toggleArrow {
+        height: 2.5em;
+    }
+
+    #toggleArrowReduced {
+        height: 2.5em;
+        margin-right: 3.5em;
+        filter: opacity(30%);
+    }
+
+    .paramcontainer img {
+        height: 1.5em;
+        margin-right: 0.5em;
+    }
+}
+

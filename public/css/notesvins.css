@@ -1,0 +1,98 @@
+
+.boxajoutvinnotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    padding: 20px;
+    margin-top: 10px;
+
+}
+
+.boxajoutvinnotes form {
+    background-color: var(--secondaire);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--borderbtn);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--principal);
+}
+
+.boxajoutvinnotes form div {
+    margin-bottom: 15px;
+}
+
+.boxajoutvinnotes form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.boxajoutvinnotes form input,
+.boxajoutvinnotes form select,
+.boxajoutvinnotes form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--verylightgrey);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.boxajoutvinnotes form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--principal);
+    color: var(--secondaire);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.boxajoutvinnotes form button:hover {
+    background-color: var(--principal);
+}
+
+.likeornottwo {
+    background-color: var(--secondaire);
+    box-shadow: 0 0 10px var(--principal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    width: 60%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 20px;
+    margin: auto;
+}
+
+.likeornottwo:hover {
+    background-color: #f17c7c;
+}
+
+.likeornottwo img {
+    margin-right: 3px;
+}
+
+
+
+.rating-bar {
+    margin: 20px auto;
+    width: 70%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+
+
+}
+
+.rating-bar-fill {
+    height: 20px;
+    background: linear-gradient(to left, var(--backstarlow), 80%, var(--backstartop));
+    transition: width 0.3s ease;
+}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="ajoutcb">
+        <p>Creer Mon CB</p>
+        <label for="code_vin_field">Entrez le code : </label>
+        <input type="text" id="code_vin_field" class="form-control">
+        <button class="btnajout" id="generate-barcode">Créer mon CB</button>
+
+        <canvas id="barcode-container"></canvas>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+    <script>
+        document.getElementById('generate-barcode').addEventListener('click', function() {
+            var value = document.getElementById('code_vin_field').value;
+            JsBarcode("#barcode-container", value, {
+                format: "CODE128",
+                lineColor: "#000",
+                width: 2,
+                height: 40,
+                displayValue: true
+            });
+        });
+    </script>
+{% endblock %}

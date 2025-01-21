@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container">
+
+        <div class="souscontainer">
+            <div class="orga">
+                <div class="post">
+                    <div class="post-content">
+                        <div class="infosprofilhome">
+                            <img src="{{ asset(app.user.banniere) }}" alt="Banniere vin" id="bannvin">
+                            <img src="{{ asset(app.user.avatar) }}" alt="maison" id="homeimgprofilpost"><br>
+                            <span class="nomprofilhome">{{ app.user.prenom }} {{ app.user.nom }}</span><br><br>
+                            {% if is_granted('ROLE_MAIN') %}
+                                <span class="nomprofilhome2">Viticulteur</span><br>
+                            {% else %}
+                                <span class="nomprofilhome2">Restaurateur</span>
+                            {% endif %}
+                        </div>
+                        <input type="button" value="What's Up ?" class="whatsup">
+                    </div>
+                    <div class="quefaire">
+                        <button class=""><a href="{{ path('main_home') }}">Actus vins</a></button>
+                        <button class=""><a href="{{ path('actus_membres') }}">Actus membres</a></button>
+
+                    </div>
+                </div>
+
+                <div class="post2">
+                    <div class="post-content">
+                        <div class="infosprofilhome">
+                            <span class="">Mes Vins </span><a href="{{ path('vins_list') }}"><span class="totalvin">{{ totalVins }}</span></a><br><br>
+                            <span class=" ">Notes Attribuées</span><span class="totalvin">{{ totalStar }}</span><br><br>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <div class="namepopup">
+                    <img src="{{ asset(app.user.avatar) }}" alt="maison" id="homeimgprofilpopup">
+                    <span class="nomprofilhome">{{ app.user.prenom }} {{ app.user.nom }}</span>
+                </div>
+                <div class="formpop">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fil">
+            {% for post in posts %}
+                <div class="comment">
+                    <div class="comment-header">
+
+                        <img src="{{ asset(post.avatar) }}" alt="maison" id="homeimgprofilpopupcom">
+                        <div class="head-comment">
+                        <h4>{{ post.pseudo }}</h4>
+                        <p class="user-role">
+                        {% if 'ROLE_MAIN' in post.userRoles[0] %}
+                            Viticulteur
+                        {% else %}
+                            Restaurateur
+                        {% endif %}
+                        </div>
+
+                    </div>
+                    <p style="text-align: left; margin: 3% 3% 3% 3%;">{{ post.comments }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var whatsupButton = document.querySelector('.whatsup');
+            var popup = document.getElementById('popup');
+            var closeButton = document.querySelector('.close');
+
+
+
+            whatsupButton.onclick = function() {
+                popup.style.display = "block";
+            };
+
+            closeButton.onclick = function() {
+                popup.style.display = "none";
+            };
+
+            window.onclick = function(event) {
+                if (event.target === popup) {
+                    popup.style.display = "none";
+                }
+            };
+
+
+        });
+
+    </script>
+{% endblock %}

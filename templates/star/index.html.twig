@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Alors C' est Comment ?{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+
+{% block body %}
+    <style>
+        .formstar{
+            margin: 5em auto auto auto;
+            text-align: center;
+            background-color: var(--secondaire);
+            width: 60%;
+            height: 30%;
+            border-radius: 1em;
+            box-shadow: 2px 2px 4px var(--boxShadow);
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .formstar h3 {
+            margin-bottom: 2em;
+        }
+
+        .formstar label {
+            display: none;
+        }
+
+        .formstar input {
+            width: 20%;
+            height: 2em;
+            border: 1px solid var(--lightgrey);
+            border-radius: 2em;
+            padding-left:1em;
+
+        }
+
+        .formstar button {
+            margin-top: 2em;
+        }
+
+        .btnstar {
+            width: 30%;
+            border-radius: 2em;
+            background-color: var(--verylightgrey);
+            height: 2em;
+            border: none;
+            font-family: "Josefin Slab", serif;
+        }
+    </style>
+    <div class="formstar">
+
+        <h3>Quel est note voules vous mettre ?</h3>
+
+        {{ form_start(starForm) }}
+        {{ form_widget(starForm) }}
+        <button class="btnstar">{{ 'Create'|trans }}</button>
+        {{ form_end(starForm) }}
+
+    </div>
+
+
+{% endblock %}

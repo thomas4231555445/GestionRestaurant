@@ -1,0 +1,406 @@
+h1 {
+    color: var(--principal);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+html {
+    height: 100%;
+}
+
+
+.login-boxx {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    width: 800px; /* Ajustez la largeur selon vos besoins */
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: var(--backlogin);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px var(--boxShadow);
+    border-radius: 10px;
+}
+
+.login-boxx h2 {
+    color: var(--principal);
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: center;
+}
+
+.login-boxx .user-boxx {
+    position: relative;
+}
+
+.login-boxx .user-boxx input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--border);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    outline: none;
+    background: transparent;
+}
+
+.login-boxx .user-boxx div {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--border);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    outline: none;
+    background: transparent;
+}
+
+.login-boxx .user-boxx label {
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--border);
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-boxx .user-boxx input:focus ~ label,
+.login-boxx .user-boxx input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: var(--principal);
+    font-size: 12px;
+}
+
+.login-boxx form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--principal);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+
+#avatar-preview , #banniere-preview{
+    border: 1px solid var(--border);
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 20px; /* Ajustez la marge selon vos besoins */
+}
+
+.form-column:last-child {
+    margin-right: 0;
+}
+
+
+#btnForm {
+    text-align: center;
+    height: 2em;
+    width: 80%;
+    justify-content: center;
+    margin-left: 10%;
+    border-radius: 1em;
+    border: 1px solid var(--principal);
+    text-transform: uppercase;
+    padding: 0.5em;
+    font-family: "Josefin Slab", serif;
+}
+
+#btnForm:hover {
+    background: var(--principal);
+}
+
+#btnFormcave {
+    text-align: center;
+    height: 30px;
+    width: 80%;
+    justify-content: center;
+    margin-left: 10%;
+    border-radius: 5px;
+    border: 1px solid var(--principal);
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+#btnFormCave:hover {
+    background: var(--principal);
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+/* Style de base pour le label */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style de base pour le groupe de boutons radio */
+.radio-group {
+    margin-top: 10px;
+    display: inline-block;
+
+}
+
+/* Style pour les boutons radio */
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+/* Style pour les erreurs */
+.form-group .form-error {
+    color: var(--flasherror);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+@media (max-width : 420px) {
+
+
+    .login-boxx {
+        width: 90%;
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+
+    .form-container {
+        display: table-row;
+    }
+
+
+    .user-boxx select {
+        margin-top: 1em;
+    }
+
+    .user-boxx img {
+        border-radius: 1em;
+    }
+
+    .form-group {
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--lightgrey);
+        width: 100%;
+    }
+
+    .form-group label {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+    }
+
+
+
+    .radio-group {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+}
+
+@media (max-width : 540px) {
+
+
+    .login-boxx {
+        width: 90%;
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+
+    .form-container {
+        display: table-row;
+    }
+
+
+    .user-boxx select {
+        margin-top: 1em;
+    }
+
+    .user-boxx img {
+        border-radius: 1em;
+    }
+
+    .form-group {
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--lightgrey);
+        width: 100%;
+    }
+
+    .form-group label {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+    }
+
+
+
+    .radio-group {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+}
+
+@media (max-width : 768px) {
+
+
+    .login-boxx {
+        width: 90%;
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+
+    .form-container {
+        display: table-row;
+    }
+
+
+    .user-boxx select {
+        margin-top: 1em;
+    }
+
+    .user-boxx img {
+        border-radius: 1em;
+    }
+
+    .form-group {
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--lightgrey);
+        width: 100%;
+    }
+
+    .form-group label {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+    }
+
+
+
+    .radio-group {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+}
+
+@media (max-width : 820px) {
+
+
+    .login-boxx {
+        width: 90%;
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+
+    .form-container {
+        display: table-row;
+    }
+
+
+    .user-boxx select {
+        margin-top: 1em;
+    }
+
+    .user-boxx img {
+        border-radius: 1em;
+    }
+
+    .form-group {
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--lightgrey);
+        width: 100%;
+    }
+
+    .form-group label {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+    }
+
+
+
+    .radio-group {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+}
+
+@media (max-width : 1180px) {
+
+
+    .login-boxx {
+        width: 90%;
+        margin-top: 5em;
+        margin-bottom: 3em;
+    }
+
+    .form-container {
+        display: table-row;
+    }
+
+
+    .user-boxx select {
+        margin-top: 1em;
+    }
+
+    .user-boxx img {
+        border-radius: 1em;
+    }
+
+    .form-group {
+        margin: 1em auto 1em auto;
+        border: 1px solid var(--lightgrey);
+        width: 100%;
+    }
+
+    .form-group label {
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+    }
+
+
+
+    .radio-group {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+    }
+
+}

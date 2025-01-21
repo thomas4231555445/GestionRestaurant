@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Base de données Etablissement</h1>
+
+
+
+    <div class="search" id="search-container" style="text-align: center" >
+        <label for="site-search">Rechercher dans la base : </label>
+        <input type="search" id="site-search" name="search" />
+    </div>
+    <div class="filvin">
+        <div class="table-container" id="table-container">
+            <table class="vin-table">
+                <thead>
+                <tr>
+                    <th id="sort-nom">Nom Etablissement</th>
+                    <th>Adresse</th>
+                    <th>Code Postale</th>
+                    <th id="sort-ville">Ville</th>
+                    <th>Telephone</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for restaurant in restaurants %}
+                    <tr>
+                        <td>{{ restaurant.nomRestaurant }}</td>
+                        <td>{{ restaurant.adresse }}</td>
+                        <td>{{ restaurant.codePostale }}</td>
+                        <td>{{ restaurant.ville }}</td>
+                        <td>{{ restaurant.telephone }}</td>
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{{ asset('js/search.js') }}"></script>
+    <script>
+        document.getElementById('sort-ville').addEventListener('click', function() {
+            sortTable(3);
+        });
+
+        document.getElementById('sort-nom').addEventListener('click', function() {
+            sortTable(0);
+        });
+
+        function sortTable(columnIndex) {
+            const table = document.querySelector('.vin-table tbody');
+            const rows = Array.from(table.rows);
+
+            rows.sort((a, b) => {
+                const cellA = a.cells[columnIndex].textContent.trim().toLowerCase();
+                const cellB = b.cells[columnIndex].textContent.trim().toLowerCase();
+                return cellA.localeCompare(cellB);
+            });
+
+            rows.forEach(row => table.appendChild(row));
+        }
+    </script>
+{% endblock %}

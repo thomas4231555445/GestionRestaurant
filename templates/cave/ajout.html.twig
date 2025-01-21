@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Ajouter une Cave</h1>
+    <div class="ajoutcave">
+        {{ form_start(caveForm) }}
+
+        {{ form_widget(caveForm) }}
+
+        <button class="btn">{{ 'Create'|trans }}</button>
+
+        {{ form_end(caveForm) }}
+    </div>
+
+{% endblock %}

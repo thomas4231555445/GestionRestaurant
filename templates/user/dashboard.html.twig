@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="pagedash">
+    <img src="{{ asset('img/bannieress.png') }}" alt="banniere vins" class="bannieredash">
+
+
+
+    <div class="index">
+        <div class="bienvenue">
+              <p class="bienvenuep1">Bonjour {{ app.user.prenom }} </p>
+            <p class="bienvenuedate">Nous sommes le {{ "now"|date("d/m/Y") }}</p>
+        </div>
+
+    </div>
+<div class="orgarefvin">
+    <div class="refvin">
+        <img src="{{ asset('img/duvin.png') }}" alt="logo mes vins">
+        <h4>Mes Vins</h4>
+        <p>Vous avez actuellement :</p>
+        <p>{{ totalVins }} Ref.</p>
+        <p><a href="{{ path('vins_list') }}"><button class="btndash">VOIR</button></a></p>
+    </div>
+    <div class="refvin">
+        <img src="{{ asset('img/four.png') }}" alt="logo mes vins">
+        <h4>Mes Fournisseurs</h4>
+        <p>Vous avez actuellement :</p>
+        <p>{{ totalFournisseurs }} Fournisseurs</p>
+        <p><a href="{{ path('mes_fournisseur') }}"><button class="btndash">VOIR</button></a></p>
+    </div>
+    <div class="refvin">
+        <img src="{{ asset('img/stocks.png') }}" alt="logo mes vins">
+        <h4>Mes Stocks</h4>
+        <p>Vous avez actuellement :</p>
+        <p>{{ stockVins }} € En Stock</p>
+    </div>
+    <div class="refvin">
+        <img src="{{ asset('img/cmds.png') }}" alt="logo mes vins">
+        <h4>Mes Commandes</h4>
+        <p>Passer une Commande</p>
+        <p style="color: var(--secondaire)"> ---- </p>
+        <p><a href="{{path('commande') }}"><button class="btndash">COMMANDER</button></a></p>
+    </div>
+    <div class="refvin">
+        <img src="{{ asset('img/cmds.png') }}" alt="logo mes vins">
+        <h4>Ma Carte</h4>
+        <p>Ma Carte</p>
+        <p style="color: var(--secondaire)"> ---- </p>
+        <p><a href="{{path('indexcarte') }}"><button class="btndash">Voir</button></a></p>
+    </div>
+</div>
+<div class="secondline">
+    <div class="memo">
+        <h4>Memo</h4>
+        <div class="formrapport">
+        {{ form_start (memoForm) }}
+        {{ form_widget(memoForm) }}
+        <button type="submit" id="popup-submit">ENVOYER</button>
+        {{ form_end(memoForm) }}
+        </div>
+    </div>
+    <div class="memod">
+        <h4>Mes Rapports</h4>
+            <div class="orgarapport">
+                <div class="rapport">
+                    <button class="btnexport"><a href="{{ path('vins_export') }}"> Télécharger la liste des vins</a></button>
+                </div>
+                <div class="rapport">
+                    <button class="btnexport"><a href="{{ path('inventaire_export') }}"> Télécharger l'inventaire en cours</a></button>
+                </div>
+
+            </div>
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}

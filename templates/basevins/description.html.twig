@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Description Vins</h1>
+
+
+    <div class="detailsvin">
+
+            <p><strong>Couleur:</strong> {{ basevins.couleur }}</p>
+            <p><strong>Type:</strong> {{ basevins.type }}</p>
+            <p><strong>Appellation:</strong> {{ basevins.appellation }}</p>
+            <p><strong>Nom Producteur:</strong> {{ basevins.nomProducteur }}</p>
+            <p><strong>Domaine:</strong> {{ basevins.domaine }}</p>
+            <p><strong>Nom Vin:</strong> {{ basevins.nomVin }}</p>
+            <p><strong>Cl:</strong> {{ basevins.cl }}</p>
+            <p><strong>Millesime:</strong> {{ basevins.millesime }}</p>
+            <p><strong>Description:</strong> {{ basevins.description }}</p>
+            <p><strong>Contact: </strong>{{ basevins.contact }}</p>
+
+        <div id="restaurant-details" style="display: none">
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

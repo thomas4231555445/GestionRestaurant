@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+
+
+    <div class="boxajoutvinnotes">
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <button class="btn">{{ 'Create'|trans }}</button>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

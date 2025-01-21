@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="paramcontainer">
+        <h2>Parametres</h2>
+            <div class="parambtn">
+                <a href="{{ path('parametre') }}"><button> <img src="{{ asset('img/coba.png') }}" alt="logo code barre">Créer mon CB</button></a>
+                <a href=""><button> <img src="{{ asset('img/questions.png') }}" alt="logo code barre">Mon Profil</button></a>
+                <a href=""><button> <img src="{{ asset('img/questions.png') }}" alt="logo code barre">Questions ?</button></a>
+
+            </div>
+
+
+
+    </div>
+
+{% endblock %}

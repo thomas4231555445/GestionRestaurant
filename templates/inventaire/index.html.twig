@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block body %}
+<div class="pagedash">
+    <div class="headvins5">
+        <h3 class="titrevins">Inventaire</h3>
+
+
+        <button class="btnajoutref"><a href="{{ path('inventaire') }}">AJOUTER DANS INVENTAIRE</a></button>
+
+    </div>
+
+    <main class="main-view-vin">
+
+
+        <div class="search">
+            <label for="site-search">Le nom contient:</label>
+            <input type="search" id="site-search" name="search" placeholder="Rechercher ..." />
+        </div>
+        <div class="table-container2">
+            <table class="vin-table2">
+                <thead>
+                <tr>
+
+                    <th id="codeVin">Code Vin</th>
+                    <th>Qts</th>
+                    <th class="vinth">Appellation</th>
+                    <th>Nom vin</th>
+                    <th>Millesime</th>
+                    <th class="vinth">Gerer</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if inventaires is not empty %}
+                    {% for inventaire in inventaires %}
+                        <tr>
+
+                            <td id="codeVin">{{ inventaire.codeVin }}</td>
+                            <td>{{ inventaire.qts }}</td>
+
+                            {% set vinFound = false %}
+                            {% for vin in vins %}
+                                {% if inventaire.codeVin == vin.codeVin %}
+                                    <td class="vinth">{{ vin.appellation }}</td>
+                                    <td>{{ vin.nomVin }}</td>
+                                    <td>{{ vin.millesime }}</td>
+                                    {% set vinFound = true %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if not vinFound %}
+                                <td colspan="3">Aucun vin trouvé.</td>
+                                <td style="background-color: red;"><button class="delete-button" data-id="{{ inventaire.id }}"><img src="{{ asset('img/plusicon.png') }}" alt="Bouton plus" style="height: 20px;"></button></td>
+
+                            {% else %}
+
+                            <td class="vinth" style="background-color: limegreen;"><button class="delete-button" data-id="{{ inventaire.id }}"><img src="{{ asset('img/plusicon.png') }}" alt="Bouton plus" style="height: 20px"></button></td>
+                       {% endif %}
+                            <td>{{ inventaire.dateEnregistrement|date('d/m/y') }}</td>
+                                </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">Aucun inventaire trouvé.</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <button class="btnexport"><a href="{{ path('inventaire_export') }}"> Télécharger en Excel</a></button>
+
+
+    </main>
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+    <script src="{{ asset('js/search.js') }}"></script>
+    <script>
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', function() {
+                var inventaireId = this.getAttribute('data-id');
+
+                if (confirm('Êtes-vous sûr de vouloir supprimer cette ref ?')) {
+                    fetch(`{{ path('delete_ref', { id: '__id__' }) }}`.replace('__id__', inventaireId), {
+                        method: 'DELETE'
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('ref supprimé avec succès.');
+                                // Recharger la page pour mettre à jour l'interface
+                                window.location.reload();
+                            } else {
+                                alert('Erreur lors de la suppression de la ref.');
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+            });
+        });
+
+
+    </script>
+
+{% endblock %}

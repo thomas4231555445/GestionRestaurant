@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+
+{% block body %}
+<div class="headvins8">
+    <h3 class="titrevins">Ajouter un Vin à la Cave</h3>
+</div>
+    <div class="selvin">
+        <select name="liste vins" id="listvins">
+            {% for vin in vins %}
+                <option value="{{ vin.codeVin }}">{{ vin.codeVin }} - {{ vin.appellation }}- {{ vin.nomProducteur }}- {{ vin.nomVin }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="formcreatecave">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btnformcave">{{ 'Ajouter'|trans }}</button>
+    {{ form_end(form) }}
+    </div>
+
+<h2 class="titleajoutvin"> Vin Présent à cette endroit</h2>
+
+<div class="descrefcave">
+    {% if vinsCaves|length > 0 %}
+    {% for vinsCave in vinsCaves %}
+        <p>Code Vin: {{ vinsCave.codeVin }}</p>
+
+        {% if vinsInfo|length > 0 %}
+            {% for vin in vinsInfo %}
+                {% if vin.codeVin == vinsCave.codeVin %}
+                    {% if vin.idRestaurant == vinsCave.idRestaurant %}
+                    <p>Couleur : {{ vin.couleur }}</p>
+                    <p>Type : {{ vin.type }}</p>
+                    <p>Appellation : {{ vin.appellation }}</p>
+                    <p>Producteur : {{ vin.nomProducteur }}</p>
+                    <p>Domaine : {{ vin.domaine }}</p>
+                    <p>Nom : {{ vin.nomVin }}</p>
+                    <p>Cl : {{ vin.cl }}</p>
+                    <p>Millesime : {{ vin.millesime }}</p>
+                    {% else %}
+                        <p>Aucun vin trouvé à cette position.</p>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

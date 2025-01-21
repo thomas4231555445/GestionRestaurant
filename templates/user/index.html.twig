@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="profil">
+        <div class="orgaleftprofil">
+            <div class="ficheprofil">
+                {% if users %}
+                <img src="{{ asset(app.user.banniere) }}" alt="Banniere vin" id="bannvinprofil">
+                <img src="{{ asset(app.user.avatar) }}" alt="maison" id="imgprofil">
+                <h2>{{ users.prenom }} {{ users.nom }}</h2>
+            </div>
+            <div class="ficheprofil2">
+
+                {% if is_granted('ROLE_MAIN') %}
+                    <span class="nomprofilhome2">Viticulteur</span><br>
+                {% else %}
+                    <span class="nomprofilhome2">Restaurateur</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="infosprofil">
+            <p style="text-align: left; margin-left: 1em; font-size: large; font-weight: bold">Mes Informations :</p>
+            <div class="info-item">
+                <p style="max-width: 4em;">Pseudo :</p>
+                <h4 class="item"> {{ users.pseudo }}</h4>
+            </div>
+            <div class="info-item">
+                <p style="max-width: 4em;">Email :</p>
+                <h4 class="item"> {{ users.email }}</h4>
+            </div>
+            <div class="info-item">
+                <p style="max-width: 4em;">Adresse:</p>
+                <h4 class="item">  {{ etablissement.adresse }}</h4>
+            </div>
+            <div class="orgaprofil">
+                <div class="info-item">
+                    <p style="max-width: 6.8em;">Etablissement :</p>
+                    <h4 class="item"> {{ etablissement.nomRestaurant }}</h4>
+                </div>
+                <div class="info-item">
+                    <p style="max-width: 5em;">Téléphone:</p>
+                    <h4 class="item"> {{ etablissement.telephone }}</h4>
+                </div>
+            </div>
+            <div class="orgaprofil">
+                <div class="info-item">
+                    <p style="max-width: 3em;">Ville:</p>
+                    <h4 class="item"> {{ etablissement.ville }}</h4>
+                </div>
+                <div class="info-item">
+                    <p style="max-width: 5.5em;">Code Postal:</p>
+                    <h4 class="item"> {{ etablissement.codePostale }}</h4>
+                </div>
+            </div>
+            <div class="orgaprofil">
+                <div class="info-item">
+                    <p style="max-width: 3em;">Siret:</p>
+                    <h4 class="item"> </h4>
+                </div>
+                <div class="info-item">
+                    <p style="max-width: 4em;">N°TVA:</p>
+                    <h4 class="item"> </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    {% else %}
+        <p>Aucun utilisateur trouvé.</p>
+    {% endif %}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="registerform">
+
+        <h2>Votre Etablissement</h2>
+
+    {{ form_start(etablissementForm) }}
+
+    {{ form_widget(etablissementForm) }}
+
+    <button class="btnetab">{{ 'Create'|trans }}</button>
+
+    {{ form_end(etablissementForm) }}
+
+
+    </div>
+
+{% endblock %}

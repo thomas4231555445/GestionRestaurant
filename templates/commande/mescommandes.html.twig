@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    <div class="pagedash">
+        <div class="headvins2">
+            <h3 class="titrevins">Mes Commandes</h3>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+                {% endfor %}
+            {% endfor %}
+            <button class="btncommande"><a href={{ path('create_command') }}>+ Nouvelle Commande</a></button>
+        </div>
+
+        <div class="header2">
+            <p style="padding-top: 1em;">Mes Commandes</p>
+            {% if commandes is empty %}
+                <p>Aucune commande trouvée.</p>
+            {% else %}
+                <div class="mescommandes">
+                    <table>
+
+                        <tbody>
+                        {% for commande in commandes %}
+                            <tr>
+                                <td>{{ commande.dateCommande|date('Y-m-d') }}</td>
+                                <td>{{ commande.nomFournisseur }}</td>
+                                <td class="delete-cell">
+                                    <button class="delete-button" data-id="{{ commande.id }}">
+                                        <img src="{{ asset('img/recept.png') }}" alt="Boutton plus" style="height: 20px">
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <script>
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', function() {
+                var commandeId = this.getAttribute('data-id');
+
+                if (confirm('Êtes-vous sûr d\'avoir reçu cette commande ?')) {
+                    fetch(`{{ path('delete_commande', { id: '__id__' }) }}`.replace('__id__', commandeId), {
+                        method: 'DELETE'
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('Commande archivé avec succès.');
+                                // Recharger la page pour mettre à jour l'interface
+                                window.location.reload();
+                            } else {
+                                alert('Erreur lors de la suppression de la commande.');
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

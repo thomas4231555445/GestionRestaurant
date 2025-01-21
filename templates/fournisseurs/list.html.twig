@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="pagedash">
+        <main class="main-view-vin">
+            <div class="headvins">
+                <h3 class="titrevins">Mes Fournisseurs</h3>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+                    {% endfor %}
+                {% endfor %}
+                <button class="btnajoutref"><a href="{{ path('create_fournisseur') }}"> + Ajouter un fournisseurs</a></button>
+            </div>
+            <div class="search">
+                <label for="site-search">Le nom contient:</label>
+                <input type="search" id="site-search" name="search" placeholder="Rechercher"/>
+            </div>
+            <div class="filvin">
+
+                <div class="table-container">
+                    <table class="vin-table">
+                        <thead>
+                        <tr>
+                            <th>NOM SOCIETE</th>
+                            <th>INTERLOCUTEUR</th>
+                            <th>TELEPHONE</th>
+                            <th>MAIL</th>
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if fournisseurs is not empty %}
+
+                            {%  for fournisseur in fournisseurs %}
+                                <tr>
+                                    <td><a href="{{path('descriptionfour', { 'id': fournisseur.id })}}">{{ fournisseur.nom }}</a></td>
+                                    <td>{{ fournisseur.prenom }} {{ fournisseur.nomFamille }}</td>
+                                    <td>{{ fournisseur.telephoneperso }}</td>
+                                    <td>{{ fournisseur.mailperso }}</td>
+
+                                </tr>
+
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3">Aucun Fournisseurs trouvé.</td>
+                            </tr>
+                        {% endif %}
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </main>
+
+    </div>
+    <script src="{{ asset('js/search.js') }}"></script>
+{% endblock %}
+

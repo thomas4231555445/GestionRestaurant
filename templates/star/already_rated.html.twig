@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+
+{% block body %}
+<style>
+    .alert {
+        margin-top: 200px;
+        margin-left: 40%;
+        font-size: larger;
+    }
+</style>
+<div class="alert alert-info">
+    Vous avez déjà mis une note pour ce vin.
+</div>
+
+{% endblock %}

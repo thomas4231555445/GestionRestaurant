@@ -1,0 +1,59 @@
+<div class="paramcontainer reduced">
+    <div class="parambtn">
+        <div class="image-wrapper">
+            <div class="fleche">
+                <img src="{{ asset('img/fleches.png') }}" alt="fleched" style="float: right; display: none;" id="toggleArrow">
+                <img src="{{ asset('img/fleched.png') }}" alt="fleche" style="float: right;" id="toggleArrowReduced">
+            </div>
+        </div>
+        <div class="image-wrapper">
+            <img src="{{ asset('img/designlogo.png') }}" alt="banniere" id="homeimglogo">
+        </div>
+        <a href="{{ path('app_profil', {'id': app.user.id}) }}"><button>
+                <img src="{{ asset(app.user.avatar) }}" alt="maison" id="homeimgprofilmenu">
+                <span class="titleparam"> {{ app.user.nom }} {{ app.user.prenom }}</span></button>
+        </a>
+        <a href="{{ path('dashboard') }}"><button> <img src="{{ asset('img/dashboardlogo.png') }}" alt="logo code barre"><span class="titleparam">Dashboard</span></button></a>
+        <a href="{{ path('vins_list') }}"><button> <img src="{{ asset('img/vinverbetn.png') }}" alt="logo code barre"><span class="titleparam">Mes Vins</span></button></a>
+        <a href="{{ path('mes_commandes') }}"><button> <img src="{{ asset('img/commandes.png') }}" alt="logo commande"><span class="titleparam">Commandes</span></button></a>
+        <a href="{{ path('vins_cave') }}"><button> <img src="{{ asset('img/cavevinsbetn.png') }}" alt="logo code barre"><span class="titleparam">Mes Caves</span></button></a>
+        <a href="{{ path('listinventaire') }}"><button> <img src="{{ asset('img/invent.png') }}" alt="logo code barre"><span class="titleparam">Inventaire</span></button></a>
+        <a href="{{ path('parametre') }}"><button><img src="{{ asset('img/coba.png') }}" alt="logo code barre"><span class="titleparam">Créer mon CB</span></button></a>
+        <a href="{{ path('main_home') }}"><button> <img src="{{ asset('img/actu.png') }}" alt="logo code barre"><span class="titleparam">Fil d' actus</span></button></a>
+        <a href="{{ path('app_logout') }}"><button> <img src="{{ asset('img/logouts.png') }}" alt="logo code barre"><span class="titleparam">Deconnexion</span></button></a>
+    </div>
+</div>
+
+<script>
+    document.getElementById('toggleArrow').addEventListener('click', function() {
+        var paramContainer = document.querySelector('.paramcontainer');
+        var toggleArrow = document.getElementById('toggleArrow');
+        var toggleArrowReduced = document.getElementById('toggleArrowReduced');
+
+        if (paramContainer.classList.contains('reduced')) {
+            paramContainer.classList.remove('reduced');
+            toggleArrow.style.display = 'block';
+            toggleArrowReduced.style.display = 'none';
+        } else {
+            paramContainer.classList.add('reduced');
+            toggleArrow.style.display = 'none';
+            toggleArrowReduced.style.display = 'block';
+        }
+    });
+
+    document.getElementById('toggleArrowReduced').addEventListener('click', function() {
+        var paramContainer = document.querySelector('.paramcontainer');
+        var toggleArrow = document.getElementById('toggleArrow');
+        var toggleArrowReduced = document.getElementById('toggleArrowReduced');
+
+        if (paramContainer.classList.contains('reduced')) {
+            paramContainer.classList.remove('reduced');
+            toggleArrow.style.display = 'block';
+            toggleArrowReduced.style.display = 'none';
+        } else {
+            paramContainer.classList.add('reduced');
+            toggleArrow.style.display = 'none';
+            toggleArrowReduced.style.display = 'block';
+        }
+    });
+</script>

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    {% if selectedCave is defined %}
+    <h1>Cave [<span class="numerocave">{{ selectedCave.numCave }}</span>]</h1>
+    <table id="cavedesign">
+        <span class="lightcave"></span>
+    {% for i in 1..12 %}
+        <tr>
+            {% for j in 1..6 %}
+
+                <td id="tdcave">
+
+                    <a href="{{ path('vinsCave', {'id': selectedCave.id, 'ligne': i, 'colonne': j}) }}">
+                        <button id="btncave" class="btncave">
+                            <span class="btlcaveext " ><span class="btlcave {% if vinsCave is not empty and (vinsCave|filter(v => v.ligne == i and v.colonne == j))|length > 0 %}red{% endif %}" ></span></span>
+                        </button>
+                    </a>
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    {% endif %}
+
+
+{% endblock %}

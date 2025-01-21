@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include 'inc/sidebar.html.twig' %}
+{% endblock %}
+
+
+{% block body %}
+<div class="pagedash">
+    <div class="headvins3">
+    <h3 class="titrevins">Ajouter Vins</h3>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash flash-{{label}}"><p class="flash-message">{{ message }}</p></div>
+            {% endfor %}
+        {% endfor %}
+    <button id="search-button" class="btnajoutref">Rechercher dans la base</button>
+    </div>
+    <div class="search2" id="search-container" style="display: none;">
+        <label for="site-search">Rechercher dans la base : </label>
+        <input type="search" id="site-search" name="search" />
+    </div>
+
+    <div class="table-container" id="table-container" style="display: none;">
+        <table class="vin-table">
+            <thead>
+            <tr>
+                <th class="vinth">Couleur</th>
+                <th class="vinth">Type</th>
+                <th>Appelation</th>
+                <th>Nom Producteur</th>
+                <th class="vinth">Domaine</th>
+                <th>Nom Vin</th>
+                <th>cl</th>
+
+                <th>Ajouter</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if basevins is not empty %}
+                {% for basevin in basevins %}
+                    <tr>
+                        <td class="vinth">{{ basevin.couleur }}</td>
+                        <td class="vinth">{{ basevin.type }}</td>
+                        <td>{{ basevin.appellation }}</td>
+                        <td>{{ basevin.nomProducteur }}</td>
+                        <td class="vinth">{{ basevin.domaine }}</td>
+                        <td>{{ basevin.nomVin }}</td>
+                        <td>{{ basevin.cl }}</td>
+
+
+                        <td><img src="{{ asset('img/plusicon.png') }}" alt="Boutton plus" style="height: 20px" class="plus-icon"></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="9">Aucun vin trouvé.</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="boxajoutvin">
+        {{ form_start(vinsForm) }}
+
+        <div class="form-row">
+            {% for field in vinsForm %}
+                {% if field.vars.name != '_token' %}
+                    <div class="form-group col-md-6">
+                        {{ form_label(field) }}
+                        {{ form_widget(field) }}
+                        {{ form_errors(field) }}
+                    </div>
+                {% else %}
+                    {{ form_widget(field) }}
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <button class="btn btn-primary">Create !</button>
+
+        {{ form_end(vinsForm) }}
+    </div>
+
+</div>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            var searchContainer = document.getElementById('search-container');
+            var tableContainer = document.getElementById('table-container');
+
+            if (searchContainer.style.display === 'none' || searchContainer.style.display === '') {
+                searchContainer.style.display = 'block';
+                tableContainer.style.display = 'block';
+            } else {
+                searchContainer.style.display = 'none';
+                tableContainer.style.display = 'none';
+            }
+        });
+
+        document.querySelectorAll('.plus-icon').forEach(function(icon) {
+            icon.addEventListener('click', function() {
+                var row = icon.closest('tr');
+                var cells = row.querySelectorAll('td');
+
+                document.querySelector('select[name="vins[couleur]"]').value = cells[0].textContent;
+                document.querySelector('input[name="vins[type]"]').value = cells[1].textContent;
+                document.querySelector('input[name="vins[appellation]"]').value = cells[2].textContent;
+                document.querySelector('input[name="vins[nom_producteur]"]').value = cells[3].textContent;
+                document.querySelector('input[name="vins[domaine]"]').value = cells[4].textContent;
+                document.querySelector('input[name="vins[nom_vin]"]').value = cells[5].textContent;
+                document.querySelector('input[name="vins[cl]"]').value = cells[6].textContent;
+                document.querySelector('input[name="vins[millesime]"]').value = cells[7].textContent;
+
+                document.getElementById('search-container').style.display = 'none';
+                document.getElementById('table-container').style.display = 'none';
+            });
+        });
+    </script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sources = document.querySelectorAll('.code-vin-source');
+            const codeVinInput = document.querySelector('input[name="vins[code_vin]"]');
+
+            function updateCodeVin() {
+                let codeVin = '';
+                sources.forEach(input => {
+                    const value = input.value.trim();
+                    if (value.length > 0) {
+                        if (input.name === 'vins[couleur]' || input.name === 'vins[appellation]' || input.name === 'vins[nom_producteur]' || input.name === 'vins[nom_vin]') {
+                            codeVin += value.charAt(0).toUpperCase();
+                        } else if (input.name === 'vins[cl]') {
+                            codeVin += value.slice(0, 2).toUpperCase();
+                        } else if (input.name === 'vins[millesime]') {
+                            codeVin += value.slice(-2).toUpperCase();
+                        }
+                    }
+                });
+                codeVinInput.value = codeVin;
+            }
+
+            sources.forEach(input => {
+                input.addEventListener('input', updateCodeVin);
+            });
+
+
+            updateCodeVin();
+        });
+    </script>
+
+
+    <script src="{{ asset('js/search.js') }}"></script>
+
+{% endblock %}
+
+

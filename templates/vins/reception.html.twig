@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    {% include 'inc/sidebar.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="pagedash">
+    <div class="formrecept">
+
+        <p>Ajouter Stock*</p>
+
+    {{ form_start(vinsForme)}}
+
+    {{ form_widget(vinsForme)}}
+
+    <button>Create !</button>
+
+    {{ form_end(vinsForme)}}
+
+    </div>
+    </div>
+
+{% endblock %}
